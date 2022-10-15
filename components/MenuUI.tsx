@@ -5,12 +5,13 @@ interface MenuUIProps {
     title: string;
     content: string;
     icon: JSX.Element;
+    link: JSX.Element;
     Id: number;
     Index: number;
     setIndex: Function
 }
 
-const MenuUI: FC<MenuUIProps> = ({ title, content, icon, Id, Index, setIndex}) => {
+const MenuUI: FC<MenuUIProps> = ({ title, content, icon, link, Id, Index, setIndex}) => {
     const handleSetIndex = (Id: number) => (Index === Id ? setIndex(0) : setIndex(Id))
     return (
         <>
@@ -36,14 +37,16 @@ const MenuUI: FC<MenuUIProps> = ({ title, content, icon, Id, Index, setIndex}) =
                             <hr className="border-1 border-brand-green"></hr>
                         </div>
 
-                        <div className="flex flex-row mx-[10%] pt-6 items-center">
+                        <div className="flex flex-row mx-[10%] py-6 items-center">
                             <div className="pr-8">
                                 {icon}
                             </div>
-                            <div className=" p-4 bg-brand-gray opacity-[70%] border-2 border-brand-orange rounded-md">
-                                <div className="text-brand-dark text-md">{content}</div>
+                            <div className=" p-4 bg-brand-gray opacity-[70%] border-4 border-brand-orange rounded-md">
+                                <div className="text-brand-dark text-lg">{content}</div>
                             </div>
                         </div>
+
+                        <div className="text-brand-green text-center">{link}</div>
                         
                     </div>
                 )}
