@@ -26,7 +26,7 @@ const Header: FC<HeaderProps> = ({ title }) => {
                 </div>
             </div>
 
-            <div className="w-full pl-12 pr-[20%] pt-[10%] pb-[15%] justify-end">
+            <div className="w-full pl-12 pr-[20%] pt-[8%] justify-end">
                 <div className="w-full">
                     <div className="text-brand-orange text-6xl text-right pr-[10%]">{title}</div>
                     <hr className="border-1 border-brand-green"></hr>

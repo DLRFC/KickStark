@@ -46,6 +46,8 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                         </div>
                     </div>
 
+                    {Id === 2 && <div>{component}</div>}                   
+
                     <div className="text-brand-green text-center">{link}</div>
                     
                 </div>

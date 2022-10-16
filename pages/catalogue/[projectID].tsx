@@ -5,7 +5,7 @@ const ProjectProfile: NextPage = () => {
     return (
         <div className="relative w-screen h-screen circuitBoard">
 
-            <Header title="project profile : [ Project Name ]" />
+            <Header title="[ Project Name ]" />
 
         </div>
     )
