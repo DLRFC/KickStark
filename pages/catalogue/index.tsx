@@ -3,6 +3,8 @@ import Header from '../../components/header'
 import ProjectCard from '../../components/projectCard'
 
 const FullCatalogue: NextPage = () => {
+
+    // need to create this data from project initial form submission
     const dummyProjects: { id: number, name: string, network: string, category1: string, category2: string, image: string, description: string, active: boolean }[] = [
         {
             id: 1,

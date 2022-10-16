@@ -46,7 +46,8 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                         </div>
                     </div>
 
-                    {Id === 2 && <div>{component}</div>}                   
+                    {/* will show component only for catalog(carousel) and builders(form) */}
+                    {/* {Id === 2 && <div>{component}</div>}                    */}
 
                     <div className="text-brand-green text-center">{link}</div>
                     

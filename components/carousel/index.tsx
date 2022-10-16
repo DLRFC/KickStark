@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import ProjectCard from "../projectCard"; 
 
 const ProjectCarousel: FC = () => {
+
+    // need to have this data created from forms on submit
     const dummyProjects: { id: number, name: string, network: string, category1: string, category2: string, image: string, description: string, active: boolean }[] = [
         {
             id: 1,

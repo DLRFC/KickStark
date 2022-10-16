@@ -37,6 +37,7 @@ const ProjectCard : FC<ProjectCardProps> = ({ id, name, network, category1, cate
                 <div className="px-2 pt-3 text-brand-darkest text-sm">
                     {description}
                 </div>
+                {/* find out why this does not evaluate to 'false' when {active} is false */}
                 {{active} ? (
                     <div className="text-brand-green text-center absolute bottom-2 left-[28%]">currently active</div>
                 ) : (
