@@ -1,7 +1,10 @@
 import { NextPage } from "next";
-import { text } from "node:stream/consumers";
 import Header from "../../components/header";
-import InvestorDashboard from "../investors/[investorID]";
+import ProgressReport from "../../components/projects/ProgressReport";
+import MapForm from "../../components/projects/MapForm";
+import Roadmap from "../../components/projects/Roadmap";
+import Card from "../../components/projects/Card"
+import List from "../../components/projects/List"
 
 // This page is initialized when builders sbmit the first form with profile info,
 // then they arrive here to their new page to fill out roadmap building form.
