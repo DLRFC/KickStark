@@ -26,7 +26,7 @@ const Menu: FC = () => {
     {
       id: 2,
       title: "catalogue",
-      content: "Browse the exciting new projects being powered by Deliverable. Select any project from the catalogue below for more details or to contribute funding.",
+      content: "Browse the exciting new projects being powered by KickStark! Select any project below for more details and to contribute funding.",
       icon: <DiCodeigniter color="#db872e" fontSize="4em"/>,
       link: <Link href="/catalogue"><a>Explore the <span className="underline">full catalogue</span> of active projects</a></Link>,
       component: <ProjectCarousel />
