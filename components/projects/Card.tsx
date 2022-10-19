@@ -16,7 +16,7 @@ type ProjectCardProps = {
 const ProjectCard : FC<ProjectCardProps> = ({ id, name, network, category1, category2, image, description, active}) => {
     return (
         <Link href={`/catalogue/${id}`}>
-            <div className="w-[275px] h-[400px] bg-brand-gray opacity-[70%] text-xs border-8 border-brand-orange rounded-lg m-10 drop-shadow-2xl cursor-pointer">
+            <div className="w-[275px] h-[400px] bg-brand-gray opacity-[70%] text-xs outline outline-brand-dark border-8 border-brand-orange rounded-lg m-10 shadow-card shadow-brand-green/80 cursor-pointer">
                 <div className="flex">
                     <div className="w-[50%]">{image}</div>
                     <div>
@@ -38,11 +38,11 @@ const ProjectCard : FC<ProjectCardProps> = ({ id, name, network, category1, cate
                     {description}
                 </div>
                 {/* find out why this does not evaluate to 'false' when {active} is false */}
-                {{active} ? (
+                {/* {{active} ? (
                     <div className="text-brand-green text-center absolute bottom-2 left-[28%]">currently active</div>
                 ) : (
                     <div className="text-red-200">not active</div>
-                )}
+                )} */}
             </div>
         </Link>
     )

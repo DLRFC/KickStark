@@ -28,28 +28,29 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                     </div>
                 </div>
             ) : (
-                <div className="w-full pl-12 pr-[20%] pt-[6%] pb-[10%] justify-end">
-                    <div className="w-full">
-                        <div className="text-brand-orange text-6xl text-right pr-[10%]">{title}</div>
-                        <hr className="border-1 border-brand-green"></hr>
-                        <hr className="border-1 border-brand-green"></hr>
-                        <hr className="border-1 border-brand-green mb-1"></hr>
-                        <hr className="border-1 border-brand-green"></hr>
+                <div>
+                    <div className="w-full pl-12 pr-[20%] pt-[6%] justify-end">
+                        <div className="w-full">
+                            <div className="text-brand-orange text-6xl text-right pr-[10%]">{title}</div>
+                            <hr className="border-1 border-brand-green"></hr>
+                            <hr className="border-1 border-brand-green"></hr>
+                            <hr className="border-1 border-brand-green mb-1"></hr>
+                            <hr className="border-1 border-brand-green"></hr>
+                        </div>
+
+                        <div className="flex flex-row mx-[10%] py-10 items-center">
+                            <div className="pr-8">
+                                {icon}
+                            </div>
+                            <div className=" p-4 bg-brand-gray opacity-[70%] border-4 border-brand-orange rounded-md">
+                                <div className="text-brand-dark text-lg">{content}</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="flex flex-row mx-[10%] py-10 items-center">
-                        <div className="pr-8">
-                            {icon}
-                        </div>
-                        <div className=" p-4 bg-brand-gray opacity-[70%] border-4 border-brand-orange rounded-md">
-                            <div className="text-brand-dark text-lg">{content}</div>
-                        </div>
-                    </div>
+                    {/* <div>{component}</div>                    */}
 
-                    {/* will show component only for catalog(carousel) and builders(form) */}
-                    {/* {Id === 2 && <div>{component}</div>}                    */}
-
-                    <div className="text-brand-green text-center">{link}</div>
+                    {(Id === 2 || Id === 4) && (<div className="py-[10%] text-brand-green text-center">{link}</div>)}
                     
                 </div>
             )}
