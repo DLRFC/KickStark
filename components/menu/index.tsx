@@ -17,7 +17,7 @@ const Menu: FC = () => {
   const menuItems: { id: number, title: string, content: string, icon: JSX.Element, link: JSX.Element, component: JSX.Element }[] = [
     {
       id: 1,
-      title: "Deliverable",
+      title: "KickStark",
       content: "This is what it does, how it works, and why you want to use it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       icon: <GiRecycle color="#db872e" fontSize="4.5em"/>,
       link: <Link href="/catalogue"><a>Explore the <span className="underline">full catalogue</span> of active projects</a></Link>,
