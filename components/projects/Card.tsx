@@ -15,7 +15,7 @@ type ProjectCardProps = {
 
 const ProjectCard : FC<ProjectCardProps> = ({ id, name, network, category1, category2, image, description, active}) => {
     return (
-        <Link href={`/catalogue/${id}`}>
+        <Link href={{ pathname: `/catalogue/${id}}`, query: { name: 'block-explorer', owner: 'Falco90'}}}>
             <div className="w-[275px] h-[400px] bg-brand-gray opacity-[70%] text-xs outline outline-brand-dark border-8 border-brand-orange rounded-lg m-10 shadow-card shadow-brand-green/80 cursor-pointer">
                 <div className="flex">
                     <div className="w-[50%]">{image}</div>
