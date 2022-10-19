@@ -12,7 +12,7 @@ const FullCatalogue: NextPage = () => {
                 <p>Select any project to view details. </p>
             </div>
         
-            <div className="grid grid-cols-3 w-full px-[8%] justify-items-center">
+            <div className="grid grid-cols-3 w-full px-[8%] pb-[8%] justify-items-center">
                 {ProjectList.map((project) => {
                     return (
                         project
