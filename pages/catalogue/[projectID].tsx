@@ -22,8 +22,23 @@ const ProjectProfile: NextPage = () => {
         <div className="relative w-screen h-screen circuitBoard">
 
             {/* learn how to receive the project id/name here */}
-            <Header title="[ Project Name ]" />
-            <div className="flex flex-row justify-between mt-16 mx-12 px-10">
+            <div className="mb-12">
+                <Header title="[ Project Name ]" />
+            </div>
+            <div className="flex flex-row mx-12 justify-between">
+                <div className="pl-16">
+                    {/* if project is fully built, display roadmap,
+                    if not, display form to create it (pop-up modal??) */}
+                    {/* <MapForm /> */}
+                    <Roadmap />
+                </div>
+                <div className="pr-7">
+                    {/* are we able to know the index we need to take from ProjectList?
+                    if not, can build an individual Card here.  */}
+                    {ProjectList[2]}    
+                </div>   
+            </div>
+            <div className="flex flex-row justify-between mx-12 pt-6 px-10">
                 <div className="pl-6">
                     <div>
                         <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Deposit Funds</button>
@@ -35,25 +50,13 @@ const ProjectProfile: NextPage = () => {
                         <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Investor Refund</button>
                     </div>
                 </div>
-                <div>
+                <div className="">
                     {/* if project is fully built, display progress report,
                     if not, display blank placeholder */}
                     <ProgressReport />
                 </div>
             </div>
-            <div className="flex flex-row mx-12 justify-between">
-                <div className="pl-7">
-                    {/* are we able to know the index we need to take from ProjectList?
-                    if not, can build an individual Card here.  */}
-                    {ProjectList[2]}    
-                </div>
-                <div className="pt-10 pb-20 pr-10">
-                    {/* if project is fully built, display roadmap,
-                    if not, display form to create it */}
-                    {/* <MapForm /> */}
-                    <Roadmap />
-                </div>
-            </div>
+            
             
         </div>
     )
