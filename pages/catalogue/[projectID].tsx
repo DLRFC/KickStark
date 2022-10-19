@@ -30,7 +30,7 @@ const ProjectProfile: NextPage = () => {
                     {/* if project is fully built, display roadmap,
                     if not, display form to create it (pop-up modal??) */}
                     {/* <MapForm /> */}
-                    <Roadmap />
+                    <Roadmap numCheckpoints={4} checkpoints={['stage1', 'stage2', 'stage3', 'stage4']}/>
                 </div>
                 <div className="pr-7">
                     {/* are we able to know the index we need to take from ProjectList?
@@ -38,7 +38,7 @@ const ProjectProfile: NextPage = () => {
                     {ProjectList[2]}    
                 </div>   
             </div>
-            <div className="flex flex-row justify-between mx-12 pt-6 px-10">
+            <div className="flex flex-row justify-between mx-12 pt-8 px-10">
                 <div className="pl-6">
                     <div>
                         <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Deposit Funds</button>
