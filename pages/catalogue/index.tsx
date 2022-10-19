@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
 import Header from '../../components/header'
 import ProjectList from '../../components/projects/List'
+import { supabase } from "../../supabase/client"
 
-const FullCatalogue: NextPage = () => {
+const FullCatalogue: NextPage = ({ projects }) => {
+    console.log(projects);
 
     return (
         <div className="w-screen h-screen circuitBoard">
@@ -26,3 +28,13 @@ const FullCatalogue: NextPage = () => {
 }
 
 export default FullCatalogue
+
+export async function getServerSideProps() {
+    const { data } = await supabase.from('projects').select()
+
+    return {
+        props: {
+            projects: data
+        }
+    }
+}
