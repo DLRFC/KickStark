@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import { NextPage } from "next";
 import Header from "../../components/header";
 
