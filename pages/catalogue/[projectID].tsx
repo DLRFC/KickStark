@@ -55,8 +55,7 @@ const ProjectProfile: NextPage = () => {
                     if not, display blank placeholder */}
                     <ProgressReport />
                 </div>
-            </div>
-            
+            </div>            
             
         </div>
     )
