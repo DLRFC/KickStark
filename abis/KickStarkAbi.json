@@ -1,0 +1,212 @@
+[
+    {
+        "inputs": [
+            {
+                "name": "_project_owner",
+                "type": "felt"
+            },
+            {
+                "name": "_max_contributors",
+                "type": "felt"
+            },
+            {
+                "name": "_max_contribution",
+                "type": "felt"
+            },
+            {
+                "name": "_token_address",
+                "type": "felt"
+            },
+            {
+                "name": "token_supply",
+                "type": "felt"
+            },
+            {
+                "name": "_token_price",
+                "type": "felt"
+            },
+            {
+                "name": "roadmap_percentages_len",
+                "type": "felt"
+            },
+            {
+                "name": "roadmap_percentages",
+                "type": "felt*"
+            }
+        ],
+        "name": "constructor",
+        "outputs": [],
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "name": "roadmap_percentages_len",
+                "type": "felt"
+            },
+            {
+                "name": "roadmap_percentages",
+                "type": "felt*"
+            }
+        ],
+        "name": "set_roadmap_stages",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "input_address",
+                "type": "felt"
+            }
+        ],
+        "name": "addWhitelist",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "validator_contract",
+                "type": "felt"
+            }
+        ],
+        "name": "start_project",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "contribution_value",
+                "type": "felt"
+            }
+        ],
+        "name": "contribute",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "nextStage",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "closeProject",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "project_claim",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "contributor_withdraw",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getStage",
+        "outputs": [
+            {
+                "name": "stage",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getTotalBalance",
+        "outputs": [
+            {
+                "name": "total",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getManagerBalance",
+        "outputs": [
+            {
+                "name": "total",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "isClosed",
+        "outputs": [
+            {
+                "name": "bool",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "stage",
+                "type": "felt"
+            }
+        ],
+        "name": "stagePercentages",
+        "outputs": [
+            {
+                "name": "percentage",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "address",
+                "type": "felt"
+            }
+        ],
+        "name": "haveInvested",
+        "outputs": [
+            {
+                "name": "bool",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "address",
+                "type": "felt"
+            }
+        ],
+        "name": "haveWithdrawn",
+        "outputs": [
+            {
+                "name": "bool",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

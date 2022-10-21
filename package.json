@@ -1,35 +1,42 @@
 {
-  "name": "deliverable",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@apollo/client": "^3.7.0",
-    "@heroicons/react": "^2.0.12",
-    "@supabase/supabase-js": "^2.0.2",
-    "axios": "^1.1.3",
-    "graphql": "^16.6.0",
-    "next": "12.3.1",
-    "next-pwa": "^5.6.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.6.0",
-    "web3.storage": "^4.4.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.8.5",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "autoprefixer": "^10.4.12",
-    "eslint": "8.25.0",
-    "eslint-config-next": "12.3.1",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.1.8",
-    "typescript": "4.8.4"
-  }
+    "name": "deliverable",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.7.0",
+        "@headlessui/react": "^1.7.3",
+        "@heroicons/react": "^2.0.12",
+        "@supabase/supabase-js": "^2.0.2",
+        "axios": "^1.1.3",
+        "chart.js": "^3.9.1",
+        "get-starknet": "^1.5.0",
+        "graphql": "^16.6.0",        
+        "next": "12.3.1",
+        "next-pwa": "^5.6.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-helmet": "^6.1.0",
+        "react-icons": "^4.6.0",
+        "starknet": "^4.4.2",
+        "web3.storage": "^4.4.0"
+    },
+    "devDependencies": {
+        "@types/chartjs": "^0.0.31",
+        "@types/node": "18.8.5",
+        "@types/react": "18.0.21",
+        "@types/react-dom": "18.0.6",
+        "@types/react-helmet": "^6.1.5",
+        "autoprefixer": "^10.4.12",
+        "eslint": "8.25.0",
+        "eslint-config-next": "12.3.1",
+        "postcss": "^8.4.18",
+        "tailwindcss": "^3.1.8",
+        "typescript": "4.8.4"
+    }
 }
