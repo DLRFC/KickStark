@@ -13,6 +13,7 @@ const CardForm: FC = () => {
     category1: "",
     category2: "",
     image: "",
+    active: true
   });
   const [isVerified, setIsVerified] = useState();
   const [message, setMessage] = useState("");
