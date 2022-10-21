@@ -19,12 +19,13 @@ import { gql } from "@apollo/client";
 // Each button should pop up a modal to set params of the transaction.
 
 type Props = {
+  project: object;
   metrics: object;
 };
 
 const ProjectProfile: NextPage<Props> = (props) => {
-  const { metrics } = props;
-  console.log(metrics)
+  const { project, metrics } = props;
+  console.log(project, metrics);
 
   return (
     <div className="relative w-screen h-screen circuitBoard">
@@ -83,22 +84,20 @@ export default ProjectProfile;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { projectID } = context.params!;
+  let project;
   let metrics;
 
   try {
-    const project = await supabase
-      .from("projects")
-      .select()
-      .eq("id", projectID);
+    const result = await supabase.from("projects").select().eq("id", projectID);
 
-    if (project.data) {
-      const { organization, repository } = project.data[0];
+    if (result.data) {
+      project = result.data[0];
 
       const { data } = await apollo.query({
         query: gql`
             {
-              organization(login: "${organization}") {
-                repository(name: "${repository}") {
+              organization(login: "${project.organization}") {
+                repository(name: "${project.repository}") {
                     id
                     url
                     pullRequests(last: 5) {
@@ -124,6 +123,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
+      project,
       metrics,
     },
   };
