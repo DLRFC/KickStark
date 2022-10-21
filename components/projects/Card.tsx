@@ -10,7 +10,6 @@ type ProjectCardProps = {
     image: string;
     description: string;
     active: boolean
-
 }
 
 const ProjectCard : FC<ProjectCardProps> = ({ id, name, network, category1, category2, image, description, active}) => {
@@ -18,7 +17,7 @@ const ProjectCard : FC<ProjectCardProps> = ({ id, name, network, category1, cate
         <Link href={`/catalogue/${id}`}>
             <div className="w-[275px] h-[400px] bg-brand-gray opacity-[70%] text-xs outline outline-brand-dark border-8 border-brand-orange rounded-lg m-10 shadow-card shadow-brand-green/80 cursor-pointer">
                 <div className="flex">
-                    <div className="w-[50%]">{image}</div>
+                        <img className="w-[50%]" src={image}></img>
                     <div>
                         <div className="p-2 pb-1 text-brand-dark text-lg underline">
                             {name}
