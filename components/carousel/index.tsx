@@ -28,9 +28,9 @@ const ProjectCarousel: FC = () => {
         // </div>
 
         <div className="flex item-center ml-[10%]">
-            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Sample Card</div>
-            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Sample Roadmap</div>
-            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Sample Progess</div>
+            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Project Card</div>
+            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Project Card</div>
+            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Project Card</div>
         </div>
     )
 }
