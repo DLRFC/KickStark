@@ -13,7 +13,7 @@ const CardForm: FC = () => {
     category1: "",
     category2: "",
     image: "",
-    active: true
+    active: true,
   });
   const [isVerified, setIsVerified] = useState();
   const [message, setMessage] = useState("");
@@ -58,14 +58,14 @@ const CardForm: FC = () => {
           onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
         ></input>
         <label className="text-center">Description</label>
-        <input
-          className="mb-3 text-center"
+        <textarea
+          className="mb-3 text-center h-[80px]"
           value={formInput.description}
           required
           onChange={(e) =>
             setFormInput({ ...formInput, description: e.target.value })
           }
-        ></input>
+        ></textarea>
         <label className="text-center">Github Organization</label>
         <input
           className="mb-3 text-center"
