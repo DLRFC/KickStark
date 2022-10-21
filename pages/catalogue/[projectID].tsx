@@ -38,23 +38,27 @@ const ProjectProfile: NextPage = () => {
                     {ProjectList[2]}    
                 </div>   
             </div>
-            <div className="flex flex-row justify-between mx-12 pt-8 px-10">
-                <div className="pl-6">
-                    <div>
-                        <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Deposit Funds</button>
-                    </div>
-                    <div>
-                        <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Builder Claim</button>
-                    </div>
-                    <div>
-                        <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Investor Refund</button>
-                    </div>
-                </div>
-                <div className="">
+            <div className="flex flex-col justify-between mx-12 pt-8 px-10">
+            <div className="items-center flex justify-center mt-5">
                     {/* if project is fully built, display progress report,
                     if not, display blank placeholder */}
                     <ProgressReport />
                 </div>
+                <div className="pl-6 flex justify-between w-100% mt-5">
+                    <div className="flex flex-col">
+                        <input></input>
+                        <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Deposit Funds</button>
+                    </div>
+                    <div className="flex flex-col">
+                        <input></input>
+                        <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Builder Claim</button>
+                    </div>
+                    <div className="flex flex-col">
+                        <input></input>
+                        <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">Investor Refund</button>
+                    </div>
+                </div>
+
             </div>            
             
         </div>
