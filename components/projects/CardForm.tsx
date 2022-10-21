@@ -48,7 +48,7 @@ const CardForm: FC = () => {
   }
 
   return (
-    <div className="w-[900px] h-[100%] flex flex-col justify-center place-items-center mb-10 ml-[15%] bg-brand-green text-brand-darkest py-5">
+    <div className="text-brand-orange">
       <form className="flex flex-col justify-center" onSubmit={createProject}>
         <label className="text-center">Project Name</label>
         <input
@@ -86,7 +86,7 @@ const CardForm: FC = () => {
         ></input>
         <button
           type="button"
-          className="bg-black text-white"
+          className="bg-brand-green text-brand-darkest"
           onClick={verifyGithub}
         >
           Verify Github
@@ -128,7 +128,7 @@ const CardForm: FC = () => {
         ></input>
         <button
           type="submit"
-          className="bg-black text-white"
+          className="bg-brand-green text-brand-darkest"
           disabled={!isVerified}
         >
           Submit
