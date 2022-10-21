@@ -16,7 +16,7 @@ const Header: FC<HeaderProps> = ({ title }) => {
                             <FaArrowCircleLeft color="#db872e" fontSize="2em"/>
                         </div>
                         <div className="">
-                                <div className="text-brand-orange text-2xl pl-8">Deliverable</div>
+                                <div className="text-brand-orange text-2xl pl-8">KickStark</div>
                                 <hr className="border-1 border-brand-green"></hr>
                         </div>
                     </div>
