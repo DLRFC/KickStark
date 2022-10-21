@@ -27,8 +27,10 @@ const ProjectCarousel: FC = () => {
         //     })}
         // </div>
 
-        <div className="w-[900px] h-[200px] flex justify-center place-items-center mb-10 ml-[15%] bg-brand-green text-brand-darkest">
-            <div>This is a carousel that will display the project cards.</div>
+        <div className="flex item-center ml-[10%]">
+            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Sample Card</div>
+            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Sample Roadmap</div>
+            <div className="h-[300px] w-[275px] mx-4 bg-brand-gray opacity-[90%] rounded-lg">Sample Progess</div>
         </div>
     )
 }
