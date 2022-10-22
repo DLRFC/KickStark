@@ -35,21 +35,30 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                             <hr className="border-1 border-brand-green"></hr>
                             <hr className="border-1 border-brand-green mb-1"></hr>
                             <hr className="border-1 border-brand-green"></hr>
-                        </div>
-
-                        <div className="flex flex-row mx-[10%] py-10 items-center">
-                            <div className="pr-8">
-                                {icon}
-                            </div>
-                            <div className=" p-4 bg-brand-gray opacity-[70%] border-4 border-brand-orange rounded-md">
-                                <div className="text-brand-dark text-lg">{content}</div>
-                            </div>
-                        </div>
+                        </div>                       
                     </div>
 
-                    <div>{component}</div>                   
+                    <div className="grid py-6">
+                        <div className="z-0 col-start-1 row-start-1 h-[350px] w-full mt-16 bg-brand-teal opacity-[40%]">
 
-                    {(Id === 2 || Id === 4) && (<div className="pb-10 text-brand-green text-center">{link}</div>)}
+                        </div>
+                        <div className="z-20 col-start-1 row-start-1">
+                            <div className="flex flex-row mx-[10%] mt-5 items-center">
+                                <div className="pr-8">
+                                    {icon}
+                                </div>
+                                <div className="w-[25%] p-4 bg-brand-gray border-8 border-brand-orange rounded-md shadow-menuInfo shadow-brand-green/80">
+                                    <div className="text-brand-dark text-md">{content}</div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div className="z-10 col-start-1 row-start-1 w-[63%] h-[350px] mt-[6%] ml-[30%] flex justify-center place-items-center bg-brand-darker border-4 border-brand-orange rounded-lg text-brand-darkest shadow-menuContent shadow-brand-green/80">
+                            {component}
+                            {/* {(Id === 2 || Id === 4) && (<div className="pt-10 pl-[45%] text-brand-green text-center">{link}</div>)} */}
+                        </div>
+                        {(Id === 2 || Id === 4) && (<div className="pt-[5%] pl-[45%] text-brand-green text-center">{link}</div>)}
+                    </div>
+
                     
                 </div>
             )}
