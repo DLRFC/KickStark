@@ -53,7 +53,7 @@ const CardForm: FC = () => {
         <div className="">
           <label className="pr-5">Project Name</label>
           <input
-            className="mb-3 bg-brand-teal opacity-[80%]"
+            className="mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
             value={formInput.name}
             required
             onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
@@ -62,7 +62,7 @@ const CardForm: FC = () => {
 
         <label className="pr-5">Description</label>
         <textarea
-          className="mb-3 h-[80px] bg-brand-teal opacity-[80%]"
+          className="mb-3 h-[80px] bg-brand-teal opacity-[80%] text-brand-gray text-lg"
           value={formInput.description}
           required
           onChange={(e) =>
@@ -93,7 +93,7 @@ const CardForm: FC = () => {
         <div>
           <label className="pr-5 text-center">Github Org or User Name</label>
           <input
-            className="mb-3 bg-brand-teal opacity-[80%] text-center"
+            className="mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
             value={formInput.organization}
             required
             onChange={(e) =>
@@ -105,7 +105,7 @@ const CardForm: FC = () => {
         <div>
           <label className="pr-5 text-center">Github Repository Name</label>
           <input
-            className="mb-6 bg-brand-teal opacity-[80%] text-center"
+            className="mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
             value={formInput.repository}
             required
             onChange={(e) =>
@@ -133,7 +133,7 @@ const CardForm: FC = () => {
         <div className="">
           <label className="pr-5 text-center">Network</label>
           <input
-            className="mb-3 bg-brand-teal opacity-[80%] text-center"
+            className="mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
             value={formInput.network}
             required
             onChange={(e) =>
@@ -208,7 +208,7 @@ const CardForm: FC = () => {
         <div>
           <label className="pr-5 text-center">Upload Image</label>
           <input
-            className="mb-6 text-center"
+            className="mb-6 text-center text-sm"
             type="file"
             required
             onChange={addFile}
