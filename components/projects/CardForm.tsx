@@ -48,7 +48,7 @@ const CardForm: FC = () => {
   }
 
   return (
-    <div className="mt-[18%] px-10 rounded-lg bg-brand-darker opacity-[90%] text-brand-orange text-xl">
+    <div className="mt-[28%] px-10 rounded-lg bg-brand-darker opacity-[90%] text-brand-orange text-xl">
       <form className="flex flex-col" onSubmit={createProject}>
         <div className="">
           <label className="pr-5">Project Name</label>
@@ -60,20 +60,38 @@ const CardForm: FC = () => {
           ></input>
         </div>
 
-        <div>
-          <label className="pr-5">Description</label>
-          <input
-            className="mb-3 bg-brand-teal opacity-[80%]"
-            value={formInput.description}
-            required
-            onChange={(e) =>
-              setFormInput({ ...formInput, description: e.target.value })
-            }
-          ></input>
-        </div>
+        <label className="pr-5">Description</label>
+        <textarea
+          className="mb-3 h-[80px] bg-brand-teal opacity-[80%]"
+          value={formInput.description}
+          required
+          onChange={(e) =>
+            setFormInput({ ...formInput, description: e.target.value })
+          }
+        ></textarea>
 
         <div>
-          <label className="pr-5 text-center">Github Organization</label>
+          <label className="pr-8">Github type</label>
+          <input
+            className="mb-5 mr-2"
+            type="radio"
+            id="org"
+            value="Organization"
+          ></input>
+          {/* need to add type to form, for="org" */}
+          <label className="text-sm text-brand-green">Organization</label>
+          <input
+            className="mb-5 ml-5 mr-2"
+            type="radio"
+            id="user"
+            value="User Name"
+          ></input>
+          {/* need to add type to form, for="user" */}
+          <label className="text-sm text-brand-green">User Name</label>
+        </div>
+        
+        <div>
+          <label className="pr-5 text-center">Github Org or User Name</label>
           <input
             className="mb-3 bg-brand-teal opacity-[80%] text-center"
             value={formInput.organization}
@@ -126,6 +144,46 @@ const CardForm: FC = () => {
 
         <div>
           <label className="pr-5 text-center">Category 1</label>
+          <select
+            id="cat1"
+            name="cat1"
+            className="mb-3 bg-brand-teal opacity-[80%] text-center text-brand-gray text-lg"
+            value={formInput.category1}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, category1: e.target.value })
+            }
+          >
+            <option value="dao">DAO</option>
+            <option value="defi">DeFi</option>
+            <option value="devtools">DevTools</option>
+            <option value="nft">NFT</option>
+            <option value="privacy">Privacy</option>
+            <option value="social">Social</option>
+          </select>
+
+          <label className="pl-8 pr-5 text-center">Category 2</label>
+          <select
+            id="cat2"
+            name="cat2"
+            className="mb-3 bg-brand-teal opacity-[80%] text-center text-brand-gray text-lg"
+            value={formInput.category2}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, category2: e.target.value })
+            }
+          >
+            <option value="dao">DAO</option>
+            <option value="defi">DeFi</option>
+            <option value="devtools">DevTools</option>
+            <option value="nft">NFT</option>
+            <option value="privacy">Privacy</option>
+            <option value="social">Social</option>
+          </select>          
+        </div>
+
+        {/* <div>
+          <label className="pr-5 text-center">Category 1</label>
           <input
             className="mb-3 bg-brand-teal opacity-[80%] text-center"
             value={formInput.category1}
@@ -134,9 +192,8 @@ const CardForm: FC = () => {
               setFormInput({ ...formInput, category1: e.target.value })
             }
           ></input>
-        </div>
-
-        <div>
+        </div> */}
+        {/* <div>
           <label className="pr-5 text-center">Category 2</label>
           <input
             className="mb-3 bg-brand-teal opacity-[80%] text-center"
@@ -146,7 +203,7 @@ const CardForm: FC = () => {
               setFormInput({ ...formInput, category2: e.target.value })
             }
           ></input>
-        </div>
+        </div> */}
 
         <div>
           <label className="pr-5 text-center">Upload Image</label>
