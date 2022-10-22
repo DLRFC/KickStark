@@ -50,12 +50,13 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                                 <div className="w-[25%] p-4 bg-brand-gray border-8 border-brand-orange rounded-md shadow-menuInfo shadow-brand-green/80">
                                     <div className="text-brand-dark text-md">{content}</div>
                                 </div>
-                            </div>                   
+                            </div> 
                         </div>
                         <div className="z-10 col-start-1 row-start-1 w-[63%] h-[350px] mt-[6%] ml-[30%] flex justify-center place-items-center bg-brand-darker border-4 border-brand-orange rounded-lg text-brand-darkest shadow-menuContent shadow-brand-green/80">
                             {component}
+                            {/* {(Id === 2 || Id === 4) && (<div className="pt-10 pl-[45%] text-brand-green text-center">{link}</div>)} */}
                         </div>
-                        {(Id === 2 || Id === 4) && (<div className="pt-10 pl-[45%] text-brand-green text-center">{link}</div>)}
+                        {(Id === 2 || Id === 4) && (<div className="pt-[5%] pl-[45%] text-brand-green text-center">{link}</div>)}
                     </div>
 
                     

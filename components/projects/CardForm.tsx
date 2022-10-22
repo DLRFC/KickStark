@@ -48,87 +48,119 @@ const CardForm: FC = () => {
   }
 
   return (
-    <div className="text-brand-orange">
-      <form className="flex flex-col justify-center" onSubmit={createProject}>
-        <label className="text-center">Project Name</label>
-        <input
-          className="mb-3 text-center"
-          value={formInput.name}
-          required
-          onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
-        ></input>
-        <label className="text-center">Description</label>
-        <textarea
-          className="mb-3 text-center h-[80px]"
-          value={formInput.description}
-          required
-          onChange={(e) =>
-            setFormInput({ ...formInput, description: e.target.value })
-          }
-        ></textarea>
-        <label className="text-center">Github Organization</label>
-        <input
-          className="mb-3 text-center"
-          value={formInput.organization}
-          required
-          onChange={(e) =>
-            setFormInput({ ...formInput, organization: e.target.value })
-          }
-        ></input>
-        <label className="text-center">Github Repository Name</label>
-        <input
-          className="mb-3 text-center"
-          value={formInput.repository}
-          required
-          onChange={(e) =>
-            setFormInput({ ...formInput, repository: e.target.value })
-          }
-        ></input>
+    <div className="mt-[18%] px-10 rounded-lg bg-brand-darker opacity-[90%] text-brand-orange text-xl">
+      <form className="flex flex-col" onSubmit={createProject}>
+        <div className="">
+          <label className="pr-5">Project Name</label>
+          <input
+            className="mb-3 bg-brand-teal opacity-[80%]"
+            value={formInput.name}
+            required
+            onChange={(e) => setFormInput({ ...formInput, name: e.target.value })}
+          ></input>
+        </div>
+
+        <div>
+          <label className="pr-5">Description</label>
+          <input
+            className="mb-3 bg-brand-teal opacity-[80%]"
+            value={formInput.description}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, description: e.target.value })
+            }
+          ></input>
+        </div>
+
+        <div>
+          <label className="pr-5 text-center">Github Organization</label>
+          <input
+            className="mb-3 bg-brand-teal opacity-[80%] text-center"
+            value={formInput.organization}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, organization: e.target.value })
+            }
+          ></input>
+        </div>
+
+        <div>
+          <label className="pr-5 text-center">Github Repository Name</label>
+          <input
+            className="mb-6 bg-brand-teal opacity-[80%] text-center"
+            value={formInput.repository}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, repository: e.target.value })
+            }
+          ></input>
+        </div> 
+
         <button
           type="button"
-          className="bg-brand-green text-brand-darkest"
+          className="mb-2 py-2 rounded-lg bg-brand-green text-md text-brand-darkest"
           onClick={verifyGithub}
         >
           Verify Github
         </button>
-        {message}
-        <label className="text-center">Network</label>
-        <input
-          className="mb-3 text-center"
-          value={formInput.network}
-          required
-          onChange={(e) =>
-            setFormInput({ ...formInput, network: e.target.value })
-          }
-        ></input>
-        <label className="text-center">Category 1</label>
-        <input
-          className="mb-3 text-center"
-          value={formInput.category1}
-          required
-          onChange={(e) =>
-            setFormInput({ ...formInput, category1: e.target.value })
-          }
-        ></input>
-        <label className="text-center">Category 2</label>
-        <input
-          className="mb-3 text-center"
-          value={formInput.category2}
-          required
-          onChange={(e) =>
-            setFormInput({ ...formInput, category2: e.target.value })
-          }
-        ></input>
-        <label className="text-center">Upload Image</label>
-        <input
-          className="mb-3 text-center"
-          type="file"
-          required
-          onChange={addFile}
-        ></input>
+
+        <div className="text-brand-green text-sm text-center pb-4">
+          {message}
+          verification message appears here
+        </div>
+
+        <hr className="border-1 border-brand-orange"></hr>
+        <hr className="border-1 border-brand-orange mb-6"></hr>
+
+        <div className="">
+          <label className="pr-5 text-center">Network</label>
+          <input
+            className="mb-3 bg-brand-teal opacity-[80%] text-center"
+            value={formInput.network}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, network: e.target.value })
+            }
+          ></input>
+        </div>
+
+        <div>
+          <label className="pr-5 text-center">Category 1</label>
+          <input
+            className="mb-3 bg-brand-teal opacity-[80%] text-center"
+            value={formInput.category1}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, category1: e.target.value })
+            }
+          ></input>
+        </div>
+
+        <div>
+          <label className="pr-5 text-center">Category 2</label>
+          <input
+            className="mb-3 bg-brand-teal opacity-[80%] text-center"
+            value={formInput.category2}
+            required
+            onChange={(e) =>
+              setFormInput({ ...formInput, category2: e.target.value })
+            }
+          ></input>
+        </div>
+
+        <div>
+          <label className="pr-5 text-center">Upload Image</label>
+          <input
+            className="mb-6 text-center"
+            type="file"
+            required
+            onChange={addFile}
+          ></input>
+        </div>
+
         <button
           type="submit"
-          className="bg-brand-green text-brand-darkest"
+          className="py-2 rounded-lg bg-brand-green text-md text-brand-darkest"
           disabled={!isVerified}
         >
           Submit
