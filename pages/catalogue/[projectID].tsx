@@ -55,26 +55,31 @@ const ProjectProfile: NextPage<Props> = (props) => {
                     if not, display blank placeholder */}
           <ProgressReport />
         </div>
-        <div className="pl-6 flex justify-between w-100% mt-5">
+        <div className=" w-100% my-10 border-4 border-brand-orange p-5">
+        <div className="my-10 text-brand-green text-2xl font-bold text-white text-center">Invest</div>
+
+        <div className="pl-6 flex justify-between">
+        
           <div className="flex flex-col">
-            <input></input>
+            <input className="py-2 rounded-md"></input>
             <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
               Deposit Funds
             </button>
           </div>
           <div className="flex flex-col">
-            <input></input>
+            <input className="py-2 rounded-md"></input>
             <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
               Builder Claim
             </button>
           </div>
           <div className="flex flex-col">
-            <input></input>
+            <input className="py-2 rounded-md"></input>
             <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
               Investor Refund
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

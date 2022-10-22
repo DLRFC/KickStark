@@ -68,20 +68,21 @@ const ProgressReport: FC = () => {
     }
     return (
         <div className="w-[100%] h-auto border-4 border-brand-orange rounded-lg text-brand-green flex flex-col justify-center place-items-center">
-            <div>This is a progress report component</div>
+            <div className="my-5 text-2xl font-bold">Progress Report</div>
             <div>
-                <h3 className="text-lg font-medium leading-6 text-gray-900">Last 30 days</h3>
+                <h3 className="text-lg font-medium leading-6 text-gray-100 text-center">Last 30 days</h3>
                 <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
                     {stats.map((item) => (
-                    <div key={item.name} className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
-                        <dt className="truncate text-sm font-medium text-gray-500">{item.name}</dt>
+                    <div key={item.name} className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6 text-center">
+                        <dt className="truncate text-md font-bold text-gray-700">{item.name}</dt>
                         <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{item.stat}</dd>
                     </div>
                     ))}
                 </dl>
             </div>
-
-            <div className="flow-root my-10">
+    <div className="flex flex-row">
+    <div className="flow-root my-10 mx-10">
+    <p className="mb-5 text-xl">Github updates</p>
       <ul role="list" className="-mb-8">
         {timeline.map((event, eventIdx) => (
           <li key={event.id}>
@@ -102,14 +103,14 @@ const ProgressReport: FC = () => {
                 </div>
                 <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                   <div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-400 mx-3">
                       {event.content}{' '}
-                      <a href={event.href} className="font-medium text-gray-900">
+                      <a href={event.href} className="font-medium text-gray-100">
                         {event.target}
                       </a>
                     </p>
                   </div>
-                  <div className="whitespace-nowrap text-right text-sm text-gray-500">
+                  <div className="whitespace-nowrap text-right text-sm text-gray-300">
                     <time dateTime={event.datetime}>{event.date}</time>
                   </div>
                 </div>
@@ -118,6 +119,49 @@ const ProgressReport: FC = () => {
           </li>
         ))}
       </ul>
+    </div>
+
+    <div className="flow-root my-10 mx-10">
+     <p className="mb-5 text-xl">Twitter updates</p>
+
+      <ul role="list" className="-mb-8">
+        {timeline.map((event, eventIdx) => (
+          <li key={event.id}>
+            <div className="relative pb-8">
+              {eventIdx !== timeline.length - 1 ? (
+                <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+              ) : null}
+              <div className="relative flex space-x-3">
+                <div>
+                  <span
+                    className={classNames(
+                      event.iconBackground,
+                      'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
+                    )}
+                  >
+                    <event.icon className="h-5 w-5 text-white" aria-hidden="true" />
+                  </span>
+                </div>
+                <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                  <div>
+                    <p className="text-sm text-gray-400 mx-3">
+                      {event.content}{' '}
+                      <a href={event.href} className="font-medium text-gray-100">
+                        {event.target}
+                      </a>
+                    </p>
+                  </div>
+                  <div className="whitespace-nowrap text-right text-sm text-gray-300">
+                    <time dateTime={event.datetime}>{event.date}</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
     </div>
         </div>
     )
