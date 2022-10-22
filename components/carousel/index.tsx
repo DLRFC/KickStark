@@ -1,5 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import ProjectList from "../projects/List"; 
+import { IoIosArrowDropleftCircle } from 'react-icons/io'
+import { IoIosArrowDroprightCircle } from 'react-icons/io'
 
 const ProjectCarousel: FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -26,10 +28,20 @@ const ProjectCarousel: FC = () => {
         //         )
         //     })}
         // </div>
-
-        <div className="w-[900px] h-[200px] flex justify-center place-items-center mb-10 ml-[15%] bg-brand-green text-brand-darkest">
-            <div>This is a carousel that will display the project cards.</div>
+        <div className="flex items-center">
+            <div>
+                <IoIosArrowDropleftCircle color="#db872e" fontSize="3.5em" />
+            </div>
+            <div className="flex pt-[10%]">
+                <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg">Project Card</div>
+                <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg">Project Card</div>
+                <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg">Project Card</div>
+            </div>
+            <div>
+                <IoIosArrowDroprightCircle color="#db872e" fontSize="3.5em" />
+            </div>
         </div>
+        
     )
 }
 
