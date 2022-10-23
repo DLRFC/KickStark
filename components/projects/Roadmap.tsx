@@ -145,6 +145,9 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
             </div>
 
             <div className="w-[70%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
+                {CurrentPhase === SelectedPhase && <p className="text-brand-green">CURRENTY UNDER DEVELOPMENT</p>}
+                {CurrentPhase > SelectedPhase && <p className="text-brand-darkest">PHASE COMPLETED</p>}
+                {CurrentPhase < SelectedPhase && <p className="text-red-500">COMING SOON</p>}               
                 <p className="pb-2">&bull; {phaseDescriptions[SelectedPhase][0]}</p>
                 <p className="pb-2">&bull; {phaseDescriptions[SelectedPhase][1]}</p>
                 <p>&bull; {phaseDescriptions[SelectedPhase][2]}</p>
