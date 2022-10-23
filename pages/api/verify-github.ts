@@ -11,13 +11,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { organization, repository } = req.body;
+  const { login, loginType, repository } = req.body;
 
   try {
+
     await apollo.query({
       query: gql`
         {
-          organization(login: "${organization}") {
+          ${loginType}(login: "${login}") {
             repository(name: "${repository}") {
               id
               url
