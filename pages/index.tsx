@@ -7,10 +7,14 @@ const Home: NextPage = () => {
     <div className="w-screen h-screen circuitBoard">
       <div className="w-full flex justify-between pt-[4%] pr-[8%]">
         <div></div>
-        <Wallet />
+        <div className=""> 
+          <Wallet />
+        </div>
       </div>
 
-      <Menu />
+      <div className="">
+        <Menu />
+      </div>
 
       <div className="bg-brand-orange w-full fixed bottom-0">
         <p className="text-brand-darkest text-lg text-center py-3">
