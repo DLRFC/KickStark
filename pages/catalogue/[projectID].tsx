@@ -30,8 +30,18 @@ const ProjectProfile: NextPage<Props> = (props) => {
   return (
     <div className="w-screen h-screen circuitBoard">
       {/* learn how to receive the project id/name here */}
-      <div className="mb-12">
-        <Header title="[ Project Name ]" />
+      <div className="mb-8">
+        <Header title="Project Name" />
+      </div>
+      <div className="flex pl-[15%] pr-[23%] pb-10 text-lg text-brand-gray">
+        <div className="w-[40%]">
+          <div className="text-3xl">Builing on Ethereum</div>
+          <div className="text-xl"><span className="text-3xl text-brand-green"> &bull; </span>Category1</div>
+          <div className="text-xl"><span className="text-3xl text-brand-green"> &bull; </span>Category2</div>
+        </div>
+        <div className="w-[75%] text-right">
+          <p>This is the project description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
       </div>
       <div className="w-full flex justify-center">
         <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg">
