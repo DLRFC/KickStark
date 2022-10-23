@@ -50,7 +50,7 @@ const CardForm: FC = () => {
     }
 
     return (
-        <div className="mt-[25%] px-10 rounded-lg bg-brand-darker text-brand-orange text-xl">
+        <div className="mt-[25%] px-10 pb-5 rounded-lg bg-brand-darker text-brand-orange text-xl">
             <form className="flex flex-col" onSubmit={createProject}>
                 <div className="">
                     <label className="pr-5">Project Name</label>
