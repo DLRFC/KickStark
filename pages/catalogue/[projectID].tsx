@@ -35,7 +35,7 @@ const ProjectProfile: NextPage<Props> = (props) => {
       </div>
       <div className="flex pl-[15%] pr-[23%] pb-10 text-lg text-brand-gray">
         <div className="w-[40%]">
-          <div className="text-3xl">Builing on Ethereum</div>
+          <div className="text-3xl">Building on Ethereum</div>
           <div className="text-xl"><span className="text-3xl text-brand-green"> &bull; </span>Category1</div>
           <div className="text-xl"><span className="text-3xl text-brand-green"> &bull; </span>Category2</div>
         </div>
