@@ -28,7 +28,7 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                 </div>
             ) : (
                 <div>
-                    <div className="w-full pl-12 pr-[20%] justify-end">
+                    <div className="w-full pl-12 pr-[15%] justify-end">
                         <div className="w-full">
                             <div className="text-brand-orange text-6xl text-right pr-[10%]">{title}</div>
                             <hr className="border-1 border-brand-green"></hr>
