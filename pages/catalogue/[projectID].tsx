@@ -50,43 +50,46 @@ const ProjectProfile: NextPage<Props> = (props) => {
             checkpoints={["stage1", "stage2", "stage3", "stage4"]}
           />
         </div>
-        {/* <div className="pr-7">
-          are we able to know the index we need to take from ProjectList?
-                    if not, can build an individual Card here. 
-          {ProjectList[2]}
-        </div> */}
       </div>
-      <div className="flex flex-col justify-between mx-12 pt-8 px-10">
-        <div className="items-center flex justify-center mt-5">
+      <div className="w-[70%] ml-[15%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
+        <p className="pb-2">&bull; This doesn't work yet</p>
+        <p className="pb-2">&bull; But it should open to display</p>
+        <p>&bull; The items that describe each stage</p>
+      </div>
+
+      <div className="flex mx-[10%] mb-12 pt-10">      
+        <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">
+          <div className="my-10 text-brand-green text-2xl font-bold text-center">Invest</div>
+
+          <div className="justify-between p-8">
+          
+            <div className="flex flex-col pb-6">
+              <input className="py-2 rounded-md"></input>
+              <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
+                Deposit Funds
+              </button>
+            </div>
+            <div className="flex flex-col pb-6">
+              <input className="py-2 rounded-md"></input>
+              <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
+                Builder Claim
+              </button>
+            </div>
+            <div className="flex flex-col">
+              <input className="py-2 rounded-md"></input>
+              <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
+                Investor Refund
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="items-center flex justify-center">
           {/* if project is fully built, display progress report,
                     if not, display blank placeholder */}
           <ProgressReport />
         </div>
-        <div className=" w-100% my-10 border-4 border-brand-orange p-5">
-        <div className="my-10 text-brand-green text-2xl font-bold text-white text-center">Invest</div>
 
-        <div className="pl-6 flex justify-between">
-        
-          <div className="flex flex-col">
-            <input className="py-2 rounded-md"></input>
-            <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
-              Deposit Funds
-            </button>
-          </div>
-          <div className="flex flex-col">
-            <input className="py-2 rounded-md"></input>
-            <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
-              Builder Claim
-            </button>
-          </div>
-          <div className="flex flex-col">
-            <input className="py-2 rounded-md"></input>
-            <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
-              Investor Refund
-            </button>
-          </div>
-        </div>
-      </div>
       </div>
     </div>
   );
