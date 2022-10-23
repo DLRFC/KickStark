@@ -6,7 +6,8 @@ import Card from "../../components/projects/Card";
 type Project = {
   id: number,
   name: string,
-  organization: string,
+  login: string,
+  loginType: string,
   repository: string,
   network: string,
   category1: string,
