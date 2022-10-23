@@ -62,18 +62,19 @@ const ProjectProfile: NextPage<Props> = (props) => {
                 </div>
             </div>
             <div className="w-full flex justify-center">
-                <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg">
+                {/* <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg"> */}
                     <Roadmap
-                        numCheckpoints={4}
-                        checkpoints={["stage1", "stage2", "stage3", "stage4"]}
+                        // phaseSummaries={[{id: 1, summary: "This is a summary of Phase1, ideally it should be about this long"}, {id:2, summary: 'This is a summary of Phase2, ideally it should be about this long'}, {id: 3, summary: 'This is a summary of Phase3, ideally it should be about this long'}, {id: 4, summary: 'This is a summary of Phase4, ideally it should be about this long'}, {id: 5, summary: 'This is a summary of Phase5, ideally it should be about this long'}]}
+                        phaseDescriptions={[["Initialize project on KickStark", "Create detailed roadmap", "Begin development"], ["phase2 item1 description", "phase2 item2 description ", "phase2 item3 description"], ["phase3 item1 description", "phase3 item2 description ", "phase3 item3 description"], ["phase4 item1 description", "phase4 item2 description ", "phase4 item3 description"], ["phase5 item1 description", "phase5 item2 description ", "phase5 item3 description"]]}
+                        phaseSummaries={['This is a summary of Phase1, ideally it should be about this long', 'This is a summary of Phase2, ideally it should be about this long', 'This is a summary of Phase3, ideally it should be about this long', 'This is a summary of Phase4, ideally it should be about this long', 'This is a summary of Phase5, ideally it should be about this long']}
                     />
-                </div>
+                {/* </div> */}
             </div>
-            <div className="w-[70%] ml-[15%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
+            {/* <div className="w-[70%] ml-[15%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
                 <p className="pb-2">&bull; This doesn't work yet</p>
                 <p className="pb-2">&bull; But it should open to display</p>
                 <p>&bull; The items that describe each stage</p>
-            </div>
+            </div> */}
 
             <div className="flex mx-[10%] mb-12 pt-10">
                 <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">

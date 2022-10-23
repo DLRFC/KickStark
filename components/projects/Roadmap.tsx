@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { FaArrowCircleDown } from 'react-icons/fa'
 import { FaArrowCircleUp } from 'react-icons/fa'
 import { BsLightningFill } from 'react-icons/bs'
@@ -9,98 +9,121 @@ import { FaPaperPlane } from 'react-icons/fa'
 import { SlArrowDown } from 'react-icons/sl'
 
 type RoadmapProps = {
-    numCheckpoints: number;
-    checkpoints: string[];
+    phaseSummaries: string[];
+    phaseDescriptions: string[][];
 }
 
-// this will create roadmap component from MapForm inputs
-const Roadmap: FC<RoadmapProps> = ({ numCheckpoints, checkpoints}) => {
-   return (
-        <ol className="items-center text-center text-brand-darkest sm:flex px-10 pt-10 pb-4">
-            <li className="relative mb-6 sm:mb-0">
-                <h3 className="pb-4 text-lg font-semibold">Phase 1</h3>
-                <div className="flex items-center">
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                    <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
-                        <BsLightningFill color="white" fontSize="1.5em" />
-                    </div>
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                </div>
-                <div className="mt-3 mx-4 sm:pr-8">
-                    <p className="text-sm font-normal">This text will be a summary of items included in Phase 1.</p>
-                </div>
-                <div className="flex justify-center pt-6">
-                    <SlArrowDown color="white" fontSize="2em"/>
-                </div>
-            </li>
-            <li className="relative mb-6 sm:mb-0">
-                <h3 className="pb-4 text-lg font-semibold">Phase 2</h3>
-                <div className="flex items-center">
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                    <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
-                        <TbLayersLinked color="white" fontSize="2em" />
-                    </div>
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                </div>
-                <div className="mt-3 mx-4 sm:pr-8">
-                    <p className="text-sm font-normal">This text will be a summary of items included in Phase 2.</p>
-                </div>
-                <div className="flex justify-center pt-6">
-                    <SlArrowDown color="white" fontSize="2em"/>
-                </div>
-            </li>
-            <li className="relative mb-6 sm:mb-0">
-                <h3 className="pb-4 text-lg font-semibold">Phase 3</h3>
-                <div className="flex items-center">
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                    <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
-                        <BsGearWideConnected color="white" fontSize="1.5em" />
-                    </div>
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                </div>
-                <div className="mt-3 mx-4 sm:pr-8">
-                    <p className="text-sm font-normal">This text will be a summary of items included in Phase 3.</p>
-                </div>
-                <div className="flex justify-center pt-6">
-                    <SlArrowDown color="white" fontSize="2em"/>
-                </div>
-            </li>
-            <li className="relative mb-6 sm:mb-0">
-                <h3 className="pb-4 text-lg font-semibold">Phase 4</h3>
-                <div className="flex items-center">
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                    <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
-                        <GiBugleCall color="white" fontSize="1.5em" />
-                    </div>
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                </div>
-                <div className="mt-3 mx-4 sm:pr-8">
-                    <p className="text-sm font-normal">This text will be a summary of items included in Phase 4.</p>
-                </div>
-                <div className="flex justify-center pt-6">
-                    <SlArrowDown color="white" fontSize="2em"/>
-                </div>
-            </li>
-            <li className="relative mb-6 sm:mb-0">
-                <h3 className="pb-4 text-lg font-semibold">Phase 5</h3>
-                <div className="flex items-center">
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                    <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
-                        <FaPaperPlane color="white" fontSize="1.5em" />
-                    </div>
-                    <div className="hidden sm:flex w-full bg-white h-1"></div>
-                </div>
-                <div className="mt-3 mx-4 sm:pr-8">
-                    <p className="text-sm font-normal">This text will be a summary of items included in Phase 5.</p>
-                </div>
-                <div className="flex justify-center pt-6">
-                    <SlArrowDown color="white" fontSize="2em"/>
-                </div>
-            </li>
-            
-        </ol>
+const Index = 0
 
-    // </div>
+// this will create roadmap component from MapForm inputs
+const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
+    const [CurrentPhase, setCurrentPhase] = useState(0)
+    const [SelectedPhase, setSelectedPhase] = useState(0)
+    const handleSetSelectedPhase = (Index: number) => (SelectedPhase === Index ? setSelectedPhase(1) : setSelectedPhase(Index))
+
+   return (
+        <div className="flex flex-col items-center">
+            <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg">
+                <ol className="items-center text-center text-brand-darkest sm:flex px-10 pt-10 pb-4">
+                    <li className="relative mb-6 sm:mb-0">
+                        <h3 className="pb-4 text-lg font-semibold">Phase 1</h3>
+                        <div className="flex items-center">
+                            <div className="hidden sm:flex w-full bg-white h-0"></div>
+                            <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
+                                <BsLightningFill color="white" fontSize="1.5em" />
+                            </div>
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                        </div>
+                        <div className="mt-3 mx-4 sm:pr-8">
+                            <p className="text-sm font-normal">{phaseSummaries[0]}</p>
+                        </div>
+                        <div className="flex justify-center pt-6">
+                            <button onClick={() => handleSetSelectedPhase(Index)} >
+                                <SlArrowDown color="white" fontSize="2em"/>
+                            </button>
+                        </div>
+                    </li>
+                    <li className="relative mb-6 sm:mb-0">
+                        <h3 className="pb-4 text-lg font-semibold">Phase 2</h3>
+                        <div className="flex items-center">
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                            <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
+                                <TbLayersLinked color="white" fontSize="2em" />
+                            </div>
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                        </div>
+                        <div className="mt-3 mx-4 sm:pr-8">
+                            <p className="text-sm font-normal">{phaseSummaries[1]}</p>
+                        </div>
+                        <div className="flex justify-center pt-6">
+                            <button onClick={() => handleSetSelectedPhase(Index)} >
+                                <SlArrowDown color="white" fontSize="2em"/>
+                            </button>
+                        </div>
+                    </li>
+                    <li className="relative mb-6 sm:mb-0">
+                        <h3 className="pb-4 text-lg font-semibold">Phase 3</h3>
+                        <div className="flex items-center">
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                            <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
+                                <BsGearWideConnected color="#A2C11C" fontSize="1.5em" />
+                            </div>
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                        </div>
+                        <div className="mt-3 mx-4 sm:pr-8">
+                            <p className="text-sm font-normal">{phaseSummaries[2]}</p>
+                        </div>
+                        <div className="flex justify-center pt-6">
+                            <button onClick={() => handleSetSelectedPhase(Index)} >
+                                <SlArrowDown color="white" fontSize="2em"/>
+                            </button>
+                        </div>
+                    </li>
+                    <li className="relative mb-6 sm:mb-0">
+                        <h3 className="pb-4 text-lg font-semibold">Phase 4</h3>
+                        <div className="flex items-center">
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                            <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
+                                <GiBugleCall color="white" fontSize="1.5em" />
+                            </div>
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                        </div>
+                        <div className="mt-3 mx-4 sm:pr-8">
+                            <p className="text-sm font-normal">{phaseSummaries[3]}</p>
+                        </div>
+                        <div className="flex justify-center pt-6">
+                            <button onClick={() => handleSetSelectedPhase(Index)} >
+                                <SlArrowDown color="white" fontSize="2em"/>
+                            </button>
+                        </div>
+                    </li>
+                    <li className="relative mb-6 sm:mb-0">
+                        <h3 className="pb-4 text-lg font-semibold">Phase 5</h3>
+                        <div className="flex items-center">
+                            <div className="hidden sm:flex w-full bg-white h-1"></div>
+                            <div className="flex z-10 justify-center items-center w-10 h-10 rounded-full ring-0 ring-brand-dark sm:ring-8 shrink-0">
+                                <FaPaperPlane color="white" fontSize="1.5em" />
+                            </div>
+                            <div className="hidden sm:flex w-full bg-white h-0"></div>
+                        </div>
+                        <div className="mt-3 mx-4 sm:pr-8">
+                            <p className="text-sm font-normal">{phaseSummaries[4]}</p>
+                        </div>
+                        <div className="flex justify-center pt-6">
+                            <button onClick={() => handleSetSelectedPhase(Index)} >
+                                <SlArrowDown color="white" fontSize="2em"/>
+                            </button>
+                        </div>
+                    </li>                 
+                </ol>
+            </div>
+
+            <div className="w-[70%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
+                <p className="pb-2">&bull; {phaseDescriptions[SelectedPhase][0]}</p>
+                <p className="pb-2">&bull; {phaseDescriptions[SelectedPhase][1]}</p>
+                <p>&bull; {phaseDescriptions[SelectedPhase][2]}</p>
+            </div>
+        </div>
    )
    
     // return (
