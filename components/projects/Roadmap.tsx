@@ -19,7 +19,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
 
    return (
         <div className="flex flex-col items-center">
-            <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg">
+            <div className="w-[85%] bg-brand-orange opacity-[75%] rounded-lg shadow-card shadow-brand-darkest">
                 <ol className="items-center text-center text-brand-darkest sm:flex px-10 pt-10 pb-4">
                     <li className="relative mb-6 sm:mb-0">
                         <h3 className="pb-4 text-lg font-semibold">Phase 1</h3>
@@ -144,7 +144,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
                 </ol>
             </div>
 
-            <div className="flex w-[70%] px-16 py-6 items-center rounded-lg bg-brand-gray opacity-[75%]">
+            <div className="flex w-[70%] px-16 py-4 items-center rounded-lg bg-brand-gray border-2 border-brand-orange opacity-[75%] shadow-card shadow-brand-darkest/80">
                 {CurrentPhase === SelectedPhase && (
                     <div className="text-xl text-brand-green">
                         <p>CURRENTY</p>

@@ -18,10 +18,10 @@ const ProjectProfile: NextPage<Props> = (props) => {
 
     return (
         <div className="w-screen h-screen circuitBoard">
-            <div className="mb-8">
+            <div className="mb-12">
                 <Header title={"Project Name"} />
             </div>
-            <div className="flex pl-[15%] pr-[23%] pb-10 text-lg text-brand-gray">
+            <div className="flex pl-[15%] pr-[23%] pb-16 text-lg text-brand-gray">
                 <div className="w-[40%]">
                     <div className="text-3xl">Building on Ethereum</div>
                     <div className="text-xl">
@@ -57,7 +57,7 @@ const ProjectProfile: NextPage<Props> = (props) => {
                 />
             </div>
 
-            <div className="flex mx-[10%] mb-12 pt-10">
+            <div className="flex mx-[10%] my-[5%]">
                 <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">
                     <div className="my-10 text-brand-green text-2xl font-bold text-center">
                         Invest
