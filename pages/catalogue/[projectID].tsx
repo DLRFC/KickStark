@@ -28,26 +28,23 @@ const ProjectProfile: NextPage<Props> = (props) => {
   console.log(project, metrics);
 
   return (
-    <div className="relative w-screen h-screen circuitBoard">
+    <div className="w-screen h-screen circuitBoard">
       {/* learn how to receive the project id/name here */}
       <div className="mb-12">
         <Header title="[ Project Name ]" />
       </div>
-      <div className="flex flex-row mx-12 justify-between">
-        <div className="pl-16">
-          {/* if project is fully built, display roadmap,
-                    if not, display form to create it (pop-up modal??) */}
-          {/* <MapForm /> */}
+      <div className="w-full flex justify-center">
+        <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg">
           <Roadmap
             numCheckpoints={4}
             checkpoints={["stage1", "stage2", "stage3", "stage4"]}
           />
         </div>
-        <div className="pr-7">
-          {/* are we able to know the index we need to take from ProjectList?
-                    if not, can build an individual Card here.  */}
+        {/* <div className="pr-7">
+          are we able to know the index we need to take from ProjectList?
+                    if not, can build an individual Card here. 
           {ProjectList[2]}
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col justify-between mx-12 pt-8 px-10">
         <div className="items-center flex justify-center mt-5">

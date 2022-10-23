@@ -67,7 +67,7 @@ const ProgressReport: FC = () => {
         return classes.filter(Boolean).join(' ')
     }
     return (
-        <div className="w-[100%] h-auto border-4 border-brand-orange rounded-lg text-brand-green flex flex-col justify-center place-items-center">
+        <div className="w-[90%] h-auto border-8 border-brand-orange rounded-lg text-brand-green flex flex-col justify-center place-items-center">
             <div className="my-5 text-2xl font-bold">Progress Report</div>
             <div>
                 <h3 className="text-lg font-medium leading-6 text-gray-100 text-center">Last 30 days</h3>
