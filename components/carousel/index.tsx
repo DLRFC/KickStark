@@ -28,7 +28,7 @@ const ProjectCarousel: FC = () => {
         //         )
         //     })}
         // </div>
-        <div className="flex items-center">
+        <div className="flex items-center mt-[10%]">
             <div>
                 <IoIosArrowDropleftCircle color="#db872e" fontSize="3.5em" />
             </div>
