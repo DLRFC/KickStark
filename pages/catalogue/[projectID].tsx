@@ -3,20 +3,9 @@ import React from "react"
 import Header from "../../components/header"
 import ProgressReport from "../../components/projects/ProgressReport"
 import Roadmap from "../../components/projects/Roadmap"
-import ProjectList from "../../components/projects/List"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
 import { gql } from "@apollo/client"
-
-// This page is initialized when builders sbmit the first form with profile info,
-// then they arrive here to their new page to fill out roadmap building form.
-// when roadmap is submitted the page displays profile card, roadmap component and progess/status component
-// All contract interactions will happen from this page.
-// Will include buttons to
-// 1)deposit funds (always available),
-// 2)builders submit checkpoint requirements/claim funds (diasbled unless wallet is project owner),
-// 3)collect refunds (disabled unless wallet is investor).
-// Each button should pop up a modal to set params of the transaction.
 
 type Props = {
     project: object
@@ -29,9 +18,8 @@ const ProjectProfile: NextPage<Props> = (props) => {
 
     return (
         <div className="w-screen h-screen circuitBoard">
-            {/* learn how to receive the project id/name here */}
             <div className="mb-8">
-                <Header title="Project Name" />
+                <Header title={"Project Name"} />
             </div>
             <div className="flex pl-[15%] pr-[23%] pb-10 text-lg text-brand-gray">
                 <div className="w-[40%]">
@@ -61,20 +49,13 @@ const ProjectProfile: NextPage<Props> = (props) => {
                     </p>
                 </div>
             </div>
+
             <div className="w-full flex justify-center">
-                {/* <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg"> */}
-                    <Roadmap
-                        // phaseSummaries={[{id: 1, summary: "This is a summary of Phase1, ideally it should be about this long"}, {id:2, summary: 'This is a summary of Phase2, ideally it should be about this long'}, {id: 3, summary: 'This is a summary of Phase3, ideally it should be about this long'}, {id: 4, summary: 'This is a summary of Phase4, ideally it should be about this long'}, {id: 5, summary: 'This is a summary of Phase5, ideally it should be about this long'}]}
-                        phaseDescriptions={[["Initialize project on KickStark", "Create detailed roadmap", "Begin development"], ["phase2 item1 description", "phase2 item2 description ", "phase2 item3 description"], ["phase3 item1 description", "phase3 item2 description ", "phase3 item3 description"], ["phase4 item1 description", "phase4 item2 description ", "phase4 item3 description"], ["phase5 item1 description", "phase5 item2 description ", "phase5 item3 description"]]}
-                        phaseSummaries={['This is a summary of Phase1, ideally it should be about this long', 'This is a summary of Phase2, ideally it should be about this long', 'This is a summary of Phase3, ideally it should be about this long', 'This is a summary of Phase4, ideally it should be about this long', 'This is a summary of Phase5, ideally it should be about this long']}
-                    />
-                {/* </div> */}
+                <Roadmap
+                    phaseDescriptions={[["Initialize project on KickStark", "Create detailed roadmap", "Begin development"], ["phase2 item1 description", "phase2 item2 description ", "phase2 item3 description"], ["phase3 item1 description", "phase3 item2 description ", "phase3 item3 description"], ["phase4 item1 description", "phase4 item2 description ", "phase4 item3 description"], ["phase5 item1 description", "phase5 item2 description ", "phase5 item3 description"]]}
+                    phaseSummaries={['This is a summary of Phase1, ideally it should be about this long', 'This is a summary of Phase2, ideally it should be about this long', 'This is a summary of Phase3, ideally it should be about this long', 'This is a summary of Phase4, ideally it should be about this long', 'This is a summary of Phase5, ideally it should be about this long']}
+                />
             </div>
-            {/* <div className="w-[70%] ml-[15%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
-                <p className="pb-2">&bull; This doesn't work yet</p>
-                <p className="pb-2">&bull; But it should open to display</p>
-                <p>&bull; The items that describe each stage</p>
-            </div> */}
 
             <div className="flex mx-[10%] mb-12 pt-10">
                 <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">
@@ -105,10 +86,9 @@ const ProjectProfile: NextPage<Props> = (props) => {
                 </div>
 
                 <div className="items-center flex justify-center">
-                    {/* if project is fully built, display progress report,
-                    if not, display blank placeholder */}
                     <ProgressReport />
                 </div>
+
             </div>
         </div>
     )
