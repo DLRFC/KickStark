@@ -28,58 +28,68 @@ const ProjectProfile: NextPage<Props> = (props) => {
   console.log(project, metrics);
 
   return (
-    <div className="relative w-screen h-screen circuitBoard">
+    <div className="w-screen h-screen circuitBoard">
       {/* learn how to receive the project id/name here */}
-      <div className="mb-12">
-        <Header title="[ Project Name ]" />
+      <div className="mb-8">
+        <Header title="Project Name" />
       </div>
-      <div className="flex flex-row mx-12 justify-between">
-        <div className="pl-16">
-          {/* if project is fully built, display roadmap,
-                    if not, display form to create it (pop-up modal??) */}
-          {/* <MapForm /> */}
+      <div className="flex pl-[15%] pr-[23%] pb-10 text-lg text-brand-gray">
+        <div className="w-[40%]">
+          <div className="text-3xl">Building on Ethereum</div>
+          <div className="text-xl"><span className="text-3xl text-brand-green"> &bull; </span>Category1</div>
+          <div className="text-xl"><span className="text-3xl text-brand-green"> &bull; </span>Category2</div>
+        </div>
+        <div className="w-[75%] text-right">
+          <p>This is the project description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+      </div>
+      <div className="w-full flex justify-center">
+        <div className="w-[85%] bg-brand-orange opacity-[80%] rounded-lg">
           <Roadmap
             numCheckpoints={4}
             checkpoints={["stage1", "stage2", "stage3", "stage4"]}
           />
         </div>
-        <div className="pr-7">
-          {/* are we able to know the index we need to take from ProjectList?
-                    if not, can build an individual Card here.  */}
-          {ProjectList[2]}
-        </div>
       </div>
-      <div className="flex flex-col justify-between mx-12 pt-8 px-10">
-        <div className="items-center flex justify-center mt-5">
+      <div className="w-[70%] ml-[15%] p-5 items-center rounded-lg text-lg text-brand-dark bg-brand-gray opacity-[75%]">
+        <p className="pb-2">&bull; This doesn't work yet</p>
+        <p className="pb-2">&bull; But it should open to display</p>
+        <p>&bull; The items that describe each stage</p>
+      </div>
+
+      <div className="flex mx-[10%] mb-12 pt-10">      
+        <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">
+          <div className="my-10 text-brand-green text-2xl font-bold text-center">Invest</div>
+
+          <div className="justify-between p-8">
+          
+            <div className="flex flex-col pb-6">
+              <input className="py-2 rounded-md"></input>
+              <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
+                Deposit Funds
+              </button>
+            </div>
+            <div className="flex flex-col pb-6">
+              <input className="py-2 rounded-md"></input>
+              <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
+                Builder Claim
+              </button>
+            </div>
+            <div className="flex flex-col">
+              <input className="py-2 rounded-md"></input>
+              <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
+                Investor Refund
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="items-center flex justify-center">
           {/* if project is fully built, display progress report,
                     if not, display blank placeholder */}
           <ProgressReport />
         </div>
-        <div className=" w-100% my-10 border-4 border-brand-orange p-5">
-        <div className="my-10 text-brand-green text-2xl font-bold text-white text-center">Invest</div>
 
-        <div className="pl-6 flex justify-between">
-        
-          <div className="flex flex-col">
-            <input className="py-2 rounded-md"></input>
-            <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
-              Deposit Funds
-            </button>
-          </div>
-          <div className="flex flex-col">
-            <input className="py-2 rounded-md"></input>
-            <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
-              Builder Claim
-            </button>
-          </div>
-          <div className="flex flex-col">
-            <input className="py-2 rounded-md"></input>
-            <button className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4">
-              Investor Refund
-            </button>
-          </div>
-        </div>
-      </div>
       </div>
     </div>
   );
