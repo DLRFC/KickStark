@@ -50,12 +50,12 @@ const CardForm: FC = () => {
     }
 
     return (
-        <div className="mt-[120%] px-10 rounded-lg bg-brand-darker opacity-[90%] text-brand-orange text-xl z-30">
+        <div className="mt-[28%] p-10 rounded-lg bg-brand-darker text-brand-orange text-xl">
             <form className="flex flex-col" onSubmit={createProject}>
                 <div className="">
                     <label className="pr-5">Project Name</label>
                     <input
-                        className="mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
+                        className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                         value={formInput.name}
                         required
                         onChange={(e) =>
@@ -66,7 +66,7 @@ const CardForm: FC = () => {
 
                 <label className="pr-5">Description</label>
                 <textarea
-                    className="mb-3 h-[80px] bg-brand-teal opacity-[80%] text-brand-gray text-lg"
+                    className="pl-1 mb-3 h-[80px] bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                     value={formInput.description}
                     required
                     onChange={(e) =>
@@ -78,7 +78,7 @@ const CardForm: FC = () => {
                 ></textarea>
 
                 <div>
-                    <label className="pr-8">Github type</label>
+                    <label className="pr-8">Github Type</label>
                     <input
                         className="mb-5 mr-2"
                         type="radio"
@@ -116,7 +116,7 @@ const CardForm: FC = () => {
                         Github Org or User Name
                     </label>
                     <input
-                        className="mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
+                        className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                         value={formInput.login}
                         required
                         onChange={(e) =>
@@ -133,7 +133,7 @@ const CardForm: FC = () => {
                         Github Repository Name
                     </label>
                     <input
-                        className="mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
+                        className="pl-1 mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                         value={formInput.repository}
                         required
                         onChange={(e) =>
@@ -163,7 +163,7 @@ const CardForm: FC = () => {
                 <div className="">
                     <label className="pr-5 text-center">Network</label>
                     <input
-                        className="mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
+                        className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                         value={formInput.network}
                         required
                         onChange={(e) =>
@@ -220,30 +220,6 @@ const CardForm: FC = () => {
                         <option value="social">Social</option>
                     </select>
                 </div>
-
-                {/* <div>
-          <label className="pr-5 text-center">Category 1</label>
-          <input
-            className="mb-3 bg-brand-teal opacity-[80%] text-center"
-            value={formInput.category1}
-            required
-            onChange={(e) =>
-              setFormInput({ ...formInput, category1: e.target.value })
-            }
-          ></input>
-        </div> */}
-                {/* <div>
-          <label className="pr-5 text-center">Category 2</label>
-          <input
-            className="mb-3 bg-brand-teal opacity-[80%] text-center"
-            value={formInput.category2}
-            required
-            onChange={(e) =>
-              setFormInput({ ...formInput, category2: e.target.value })
-            }
-          ></input>
-        </div> */}
-
                 <div>
                     <label className="pr-5 text-center">Upload Image</label>
                     <input
