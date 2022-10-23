@@ -111,7 +111,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       const { data } = await apollo.query({
         query: gql`
             {
-              organization(login: "${project.organization}") {
+              ${project.loginType}(login: "${project.login}") {
                 repository(name: "${project.repository}") {
                     id
                     url
