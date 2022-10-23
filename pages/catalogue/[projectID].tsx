@@ -162,8 +162,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         console.log("Error", error)
     }
 
-    console.log("METRICS", metrics)
-
     return {
         props: {
             project,
