@@ -26,7 +26,7 @@ const Menu: FC = () => {
     {
       id: 2,
       title: "catalogue",
-      content: "Browse the exciting new projects being powered by KickStark! Select any project below for more details and to contribute funding.",
+      content: "Browse the exciting new projects being powered by KickStark! Select any project for details and to contribute funding.",
       icon: <DiCodeigniter color="#db872e" fontSize="6em"/>,
       link: <Link href="/catalogue"><a>Explore the <span className="underline">full catalogue</span> of active projects</a></Link>,
       component: <ProjectCarousel />
@@ -34,15 +34,15 @@ const Menu: FC = () => {
     {
       id: 3,
       title: "builders",
-      content: "Start here to create your project profile and get funded! After submitting this form you will proceed to set up your roadmap and investment terms.",
+      content: "Start here to create your project profile and get funded! Submitting this form will initialize your project and allow you add deliverables to your project's custom roadmap.",
       icon: <GoTools color="#db872e" fontSize="6em"/>,
       link: <Link href="/catalogue"><a>Explore the <span className="underline">full catalogue</span> of active projects</a></Link>,
       component: <CardForm />
     },
     {
       id: 4,
-      title: "investors",
-      content: "Some more detail about what to expect when you fund a project. Link to full catalogue page or connect your wallet to access your personal Investor's Dashboard.",
+      title: "contributors",
+      content: "Some more detail about what to expect when you fund a project. Link to full catalogue page or connect your wallet to access your personal Contributor's Dashboard.",
       icon: <GiTakeMyMoney color="#db872e" fontSize="7em"/>,
       link: <Link href="/catalogue"><a>Explore the <span className="underline">full catalogue</span> of active projects</a></Link>,
       component: <InvestorPreview />
