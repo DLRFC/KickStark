@@ -1,7 +1,6 @@
 import React, { FC, SyntheticEvent, useState } from "react"
 import axios from "axios"
 import { supabase } from "../../utils/supabase"
-import { web3storage } from "../../utils/web3storage"
 
 const CardForm: FC = () => {
     const [formInput, setFormInput] = useState({
@@ -13,20 +12,10 @@ const CardForm: FC = () => {
         network: "",
         category1: "DAO",
         category2: "Privacy",
-        image: "",
         active: true
     })
     const [isVerified, setIsVerified] = useState()
     const [message, setMessage] = useState("Verification message appears here")
-
-    async function addFile(event: SyntheticEvent<HTMLInputElement>) {
-        const file = event.currentTarget.files
-
-        if (file) {
-            const cid = await web3storage.put(file)
-            setFormInput({ ...formInput, image: "ipfs://" + cid })
-        }
-    }
 
     async function createProject(event: SyntheticEvent<EventTarget>) {
         event.preventDefault()
@@ -220,16 +209,6 @@ const CardForm: FC = () => {
                         <option value="social">Social</option>
                     </select>
                 </div>
-                <div>
-                    <label className="pr-5 text-center">Upload Image</label>
-                    <input
-                        className="mb-6 text-center text-sm"
-                        type="file"
-                        required
-                        onChange={addFile}
-                    ></input>
-                </div>
-
                 <button
                     type="submit"
                     className="py-2 rounded-lg bg-brand-green text-md text-brand-darkest"

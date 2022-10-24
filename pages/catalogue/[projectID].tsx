@@ -6,54 +6,49 @@ import Roadmap from "../../components/projects/Roadmap"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
 import { gql } from "@apollo/client"
+import { Project} from "../../Types/Project"
 
 type Props = {
-    project: object
+    project: Project
     metrics: object
 }
 
-const ProjectProfile: NextPage<Props> = (props) => {
-    const { project, metrics } = props
+const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
     console.log(project, metrics)
 
     return (
         <div className="w-screen h-screen circuitBoard">
             <div className="mb-12">
-                <Header title={"Project Name"} />
+                <Header title={project.name} />
             </div>
             <div className="flex pl-[15%] pr-[23%] pb-16 text-lg text-brand-gray">
                 <div className="w-[40%]">
-                    <div className="text-3xl">Building on Ethereum</div>
+                    <div className="text-3xl">Building on {project.network}</div>
                     <div className="text-xl">
                         <span className="text-3xl text-brand-green">
                             {" "}
                             &bull;{" "}
                         </span>
-                        Category1
+                        {project.category1}
                     </div>
                     <div className="text-xl">
                         <span className="text-3xl text-brand-green">
                             {" "}
                             &bull;{" "}
                         </span>
-                        Category2
+                        {project.category2}
                     </div>
                 </div>
                 <div className="w-[75%] text-right">
-                    <p>
-                        This is the project description. Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad
-                        minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat.
+                    <p>{project.description}
                     </p>
                 </div>
             </div>
 
             <div className="w-full flex justify-center">
                 <Roadmap
-                    phaseDescriptions={[["Initialize project on KickStark", "Create detailed roadmap", "Begin development"], ["phase2 item1 description", "phase2 item2 description ", "phase2 item3 description"], ["phase3 item1 description", "phase3 item2 description ", "phase3 item3 description"], ["phase4 item1 description", "phase4 item2 description ", "phase4 item3 description"], ["phase5 item1 description", "phase5 item2 description ", "phase5 item3 description"]]}
-                    phaseSummaries={['This is a summary of Phase1, ideally it should be about this long', 'This is a summary of Phase2, ideally it should be about this long', 'This is a summary of Phase3, ideally it should be about this long', 'This is a summary of Phase4, ideally it should be about this long', 'This is a summary of Phase5, ideally it should be about this long']}
+                    phaseDescriptions={project.phaseDescriptions}
+                    phaseSummaries={project.phaseSummaries}
                 />
             </div>
 
