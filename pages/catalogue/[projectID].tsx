@@ -6,22 +6,7 @@ import Roadmap from "../../components/projects/Roadmap"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
 import { gql } from "@apollo/client"
-
-type Project = {
-    id: number,
-    name: string,
-    description: string,
-    network: string,
-    category1: string,
-    category2: string,
-    repository: string,
-    image: string,
-    active: boolean,
-    loginType: string,
-    login: string,
-    phaseSummaries: string[],
-    phaseDescriptions: string[][]
-}
+import { Project} from "../../Types/Project"
 
 type Props = {
     project: Project
