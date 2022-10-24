@@ -13,8 +13,7 @@ type Props = {
     metrics: object
 }
 
-const ProjectProfile: NextPage<Props> = (props) => {
-    const { project, metrics } = props
+const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
     console.log(project, metrics)
 
     return (

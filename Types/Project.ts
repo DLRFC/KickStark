@@ -6,7 +6,6 @@ export type Project = {
     category1: string,
     category2: string,
     repository: string,
-    image: string,
     active: boolean,
     loginType: string,
     login: string,
