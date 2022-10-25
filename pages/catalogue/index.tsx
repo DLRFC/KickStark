@@ -2,27 +2,13 @@ import type { NextPage } from "next";
 import Header from "../../components/header";
 import { supabase } from "../../utils/supabase";
 import Card from "../../components/projects/Card";
-
-type Project = {
-  id: number,
-  name: string,
-  login: string,
-  loginType: string,
-  repository: string,
-  network: string,
-  category1: string,
-  category2: string,
-  image: string,
-  description: string,
-  active: boolean
-}
+import { Project } from "../../Types/Project"
 
 type Props = {
   projects: Project[]
 }
 
-const FullCatalogue: NextPage<Props> = (props) => {
-  const { projects } = props
+const FullCatalogue: NextPage<Props> = ({projects}) => {
 
   return (
     <div className="w-screen h-screen circuitBoard">
@@ -32,17 +18,10 @@ const FullCatalogue: NextPage<Props> = (props) => {
       </div>
 
       <div className="grid grid-cols-3 w-full px-[8%] pb-[8%] justify-items-center">
-        {projects.map((project: Project) => {
+        {projects.map((project) => {
           return (
             <Card
-              id={project.id}
-              name={project.name}
-              network={project.network}
-              category1={project.category1}
-              category2={project.category2}
-              image={project.image}
-              description={project.description}
-              active={project.active}
+              project={project}
             />
           );
         })}
