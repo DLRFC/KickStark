@@ -18,7 +18,13 @@ type Props = {
     phaseDescriptions: string[][]
 }
 
-const SubmitForm: FC<Props> = ({ nextStep, previousStep, values, phaseSummaries, phaseDescriptions }) => {
+const SubmitForm: FC<Props> = ({
+    nextStep,
+    previousStep,
+    values,
+    phaseSummaries,
+    phaseDescriptions
+}) => {
     function previousPage(e: SyntheticEvent) {
         e.preventDefault()
         previousStep()
@@ -49,21 +55,25 @@ const SubmitForm: FC<Props> = ({ nextStep, previousStep, values, phaseSummaries,
     }
 
     return (
-        <div className="mt-[25%] px-10 pb-5 rounded-lg bg-brand-darker text-brand-orange text-xl">
-            You are about to submit the project form. Please make sure
-            everything is correct.
+        <div className="flex flex-col items-center">
+            <p>
+                You are about to submit the project form. Please make sure
+                everything is correct.
+            </p>
+            <div className="mt-4 flex flex-row gap-3">
             <button
                 onClick={(e) => createProject(e)}
-                className="py-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
             >
                 Submit Form
             </button>
             <button
                 onClick={previousPage}
-                className="py-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
             >
-                Back
+                Go Back
             </button>
+            </div>
         </div>
     )
 }
