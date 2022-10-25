@@ -62,13 +62,13 @@ const RoadmapForm: FC<Props> = ({
             <div className="my-2 flex flex-row justify-between">
             <button
                 onClick={previousPage}
-                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="w-[120px] p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
             >
                 Back
             </button>
             <button
                 onClick={nextPage}
-                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="w-[120px] p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
             >
                 Continue
             </button>

@@ -62,16 +62,16 @@ const SubmitForm: FC<Props> = ({
             </p>
             <div className="mt-4 flex flex-row gap-3">
             <button
-                onClick={(e) => createProject(e)}
-                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
-            >
-                Submit Form
-            </button>
-            <button
                 onClick={previousPage}
-                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="w-[120px] p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
             >
                 Go Back
+            </button>
+            <button
+                onClick={(e) => createProject(e)}
+                className="w-[120px] p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+            >
+                Submit
             </button>
             </div>
         </div>
