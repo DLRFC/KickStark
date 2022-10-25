@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 import CardForm from "./CardForm"
 import RoadmapForm from "./RoadmapForm"
 import SubmitForm from "./SubmitForm"
 import Success from "./Success"
 
-const BuilderForm: any = () => {
+const BuilderForm: FC = () => {
     const [cardFormInput, setCardFormInput] = useState({
         name: "",
         description: "",
@@ -13,15 +13,9 @@ const BuilderForm: any = () => {
         repository: "",
         network: "",
         category1: "DAO",
-        category2: "Privacy",
+        category2: "Privacy"
     })
-    const [phaseSummaries, setPhaseSummaries] = useState([
-        "",
-        "",
-        "",
-        "",
-        ""
-    ])
+    const [phaseSummaries, setPhaseSummaries] = useState(["", "", "", "", ""])
     const [phaseDescriptions, setPhaseDescriptions] = useState([
         ["", "", ""],
         ["", "", ""],
@@ -60,44 +54,51 @@ const BuilderForm: any = () => {
         setPhaseDescriptions(updatedArray)
     }
 
-    switch (step) {
-        case 1:
-            return (
-                <CardForm
-                    nextStep={nextStep}
-                    updateCardForm={updateCardForm}
-                    values={cardFormInput}
-                />
-            )
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-            return (
-                <RoadmapForm
-                    phase={step - 1}
-                    nextStep={nextStep}
-                    previousStep={previousStep}
-                    updatePhaseSummaries={updatePhaseSummaries}
-                    updatePhaseDescriptions={updatePhaseDescriptions}
-                    phaseSummaries={phaseSummaries}
-                    phaseDescriptions={phaseDescriptions}
-                />
-            )
-        case 7:
-            return (
-                <SubmitForm
-                    nextStep={nextStep}
-                    previousStep={previousStep}
-                    values={cardFormInput}
-                    phaseSummaries={phaseSummaries}
-                    phaseDescriptions={phaseDescriptions}
-                />
-            )
-        case 8:
-            return <Success />
+    function renderFormComponent() {
+        switch (step) {
+            case 1:
+                return (
+                    <CardForm
+                        nextStep={nextStep}
+                        updateCardForm={updateCardForm}
+                        values={cardFormInput}
+                    />
+                )
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                return (
+                    <RoadmapForm
+                        phase={step - 1}
+                        nextStep={nextStep}
+                        previousStep={previousStep}
+                        updatePhaseSummaries={updatePhaseSummaries}
+                        updatePhaseDescriptions={updatePhaseDescriptions}
+                        phaseSummaries={phaseSummaries}
+                        phaseDescriptions={phaseDescriptions}
+                    />
+                )
+            case 7:
+                return (
+                    <SubmitForm
+                        nextStep={nextStep}
+                        previousStep={previousStep}
+                        values={cardFormInput}
+                        phaseSummaries={phaseSummaries}
+                        phaseDescriptions={phaseDescriptions}
+                    />
+                )
+            case 8:
+                return <Success />
+        }
     }
+    return (
+        <div className="mt-[25%] p-10 rounded-lg bg-brand-darker text-brand-orange text-xl w-[650px] minH-[600px]">
+            {renderFormComponent()}
+        </div>
+    )
 }
 
 export default BuilderForm
