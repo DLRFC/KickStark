@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import ProjectList from "../projects/List"; 
+import ProjectList from "../../projects/List"; 
 import { IoIosArrowDropleftCircle } from 'react-icons/io'
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 
