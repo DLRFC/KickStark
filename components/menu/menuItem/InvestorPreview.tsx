@@ -1,55 +1,55 @@
 import React, { FC, useState, Fragment } from "react"
 import Image from "next"
-import { Tab, Listbox, Transition } from "@headlessui/react"
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid"
-import Activity from "../activity"
-import Progress from "../progress"
+// import { Tab, Listbox, Transition } from "@headlessui/react"
+// import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid"
+// import Activity from "../../../pages/investors/Activity"
+// import Progress from "../../../pages/investors/Progress"
 
 // this will display a sample investor's dashboard inside
 // the 'investors' heading of front page menu
 const InvestorPreview: FC = () => {
-    const projects: { id: number; name: string; unavailable: boolean }[] = [
-        {
-            id: 1,
-            name: "Deliverable",
-            unavailable: false
-        },
-        {
-            id: 2,
-            name: "Om",
-            unavailable: false
-        },
-        {
-            id: 3,
-            name: "Emergence",
-            unavailable: false
-        },
-        {
-            id: 4,
-            name: "DecentraList",
-            unavailable: false
-        },
-        {
-            id: 5,
-            name: "MxTape",
-            unavailable: false
-        },
-        {
-            id: 6,
-            name: "Parfait",
-            unavailable: false
-        }
-    ]
+    // const projects: { id: number; name: string; unavailable: boolean }[] = [
+    //     {
+    //         id: 1,
+    //         name: "Deliverable",
+    //         unavailable: false
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Om",
+    //         unavailable: false
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Emergence",
+    //         unavailable: false
+    //     },
+    //     {
+    //         id: 4,
+    //         name: "DecentraList",
+    //         unavailable: false
+    //     },
+    //     {
+    //         id: 5,
+    //         name: "MxTape",
+    //         unavailable: false
+    //     },
+    //     {
+    //         id: 6,
+    //         name: "Parfait",
+    //         unavailable: false
+    //     }
+    // ]
 
-    const [selectedProject, setSelectedProject] = useState(projects[0])
+    // const [selectedProject, setSelectedProject] = useState(projects[0])
 
-    const classNames = (...classes: any[]) => {
-        return classes.filter(Boolean).join(" ")
-    }
+    // const classNames = (...classes: any[]) => {
+    //     return classes.filter(Boolean).join(" ")
+    // }
 
     return (
         <>
-            <div className="w-[900px] ml-[15%] mt-[35%] mb-2">
+            {/* <div className="w-[900px] ml-[15%] mt-[35%] mb-2">
                 <Listbox value={selectedProject} onChange={setSelectedProject}>
                     <div className="relative mt-1">
                         <Listbox.Button className="text-brand-gray relative w-full cursor-default rounded-lg bg-blue-200/20 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-brand-orange focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-orange sm:text-sm">
@@ -207,7 +207,7 @@ const InvestorPreview: FC = () => {
                         </div>
                     </Tab.Panel>
                 </Tab.Panels>
-            </Tab.Group>
+            </Tab.Group> */}
         </>
     )
 }
