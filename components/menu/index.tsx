@@ -6,7 +6,7 @@ import { GiTakeMyMoney } from 'react-icons/gi'
 import { GoTools } from 'react-icons/go'
 import MenuItem from './MenuItem'
 import ProjectPreview from './ProjectPreview'
-import ProjectCarousel from '../carousel'
+import ProjectCarousel from './ProjectCarousel'
 import CardForm from '../projects/CardForm'
 import InvestorPreview from './InvestorPreview'
 
