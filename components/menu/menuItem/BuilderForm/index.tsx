@@ -95,7 +95,7 @@ const BuilderForm: FC = () => {
         }
     }
     return (
-        <div className="mt-[25%] p-10 rounded-lg bg-brand-darker text-brand-orange text-xl w-[650px] minH-[600px]">
+        <div className="mt-[35%] p-5 rounded-lg bg-brand-darker text-brand-orange text-xl w-[650px] minH-[600px]">
             {renderFormComponent()}
         </div>
     )
