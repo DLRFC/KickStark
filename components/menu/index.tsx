@@ -7,7 +7,7 @@ import { GoTools } from "react-icons/go"
 import MenuItem from "./menuItem"
 import ProjectPreview from "./menuItem/ProjectPreview"
 import ProjectCarousel from "./menuItem/ProjectCarousel"
-import BuilderForm from "../projects/BuilderForm/BuilderForm"
+import BuilderForm from "./menuItem/BuilderForm"
 import InvestorPreview from "./menuItem/InvestorPreview"
 
 const Menu: FC = () => {
