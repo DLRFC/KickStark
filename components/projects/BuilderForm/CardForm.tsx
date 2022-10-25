@@ -1,37 +1,35 @@
 import React, { FC, SyntheticEvent, useState } from "react"
 import axios from "axios"
-import { supabase } from "../../utils/supabase"
 
-const CardForm: FC = () => {
-    const [formInput, setFormInput] = useState({
-        name: "",
-        description: "",
-        loginType: "organization",
-        login: "",
-        repository: "",
-        network: "",
-        category1: "DAO",
-        category2: "Privacy",
-        active: true
-    })
+type Props = {
+    nextStep: Function
+    updateCardForm: Function
+    values: {
+        name: string
+        description: string
+        loginType: string
+        login: string
+        repository: string
+        network: string
+        category1: string
+        category2: string
+    }
+}
+
+const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
     const [isVerified, setIsVerified] = useState()
     const [message, setMessage] = useState("Verification message appears here")
 
-    async function createProject(event: SyntheticEvent<EventTarget>) {
-        event.preventDefault()
-
-        try {
-            await supabase.from("projects").insert([formInput]).single()
-        } catch (error) {
-            console.log("Error: ", error)
-        }
+    function nextPage(e: SyntheticEvent) {
+        e.preventDefault()
+        nextStep()
     }
 
     async function verifyGithub() {
         const response = await axios.post("/api/verify-github", {
-            login: formInput.login,
-            loginType: formInput.loginType,
-            repository: formInput.repository
+            login: values.login,
+            loginType: values.loginType,
+            repository: values.repository
         })
         const { isVerified, message } = response.data
         setIsVerified(isVerified)
@@ -40,30 +38,23 @@ const CardForm: FC = () => {
 
     return (
         <div className="mt-[25%] px-10 pb-5 rounded-lg bg-brand-darker text-brand-orange text-xl">
-            <form className="flex flex-col" onSubmit={createProject}>
+            <form className="flex flex-col">
                 <div className="">
                     <label className="pr-5">Project Name</label>
                     <input
                         className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
-                        value={formInput.name}
+                        value={values.name}
                         required
-                        onChange={(e) =>
-                            setFormInput({ ...formInput, name: e.target.value })
-                        }
+                        onChange={(e) => updateCardForm("name", e)}
                     ></input>
                 </div>
 
                 <label className="pr-5">Description</label>
                 <textarea
                     className="pl-1 mb-3 h-[80px] bg-brand-teal opacity-[80%] text-brand-gray text-lg"
-                    value={formInput.description}
+                    value={values.description}
                     required
-                    onChange={(e) =>
-                        setFormInput({
-                            ...formInput,
-                            description: e.target.value
-                        })
-                    }
+                    onChange={(e) => updateCardForm("description", e)}
                 ></textarea>
 
                 <div>
@@ -72,13 +63,8 @@ const CardForm: FC = () => {
                         className="mb-5 mr-2"
                         type="radio"
                         value="organization"
-                        checked={formInput.loginType === "organization"}
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                loginType: e.target.value
-                            })
-                        }
+                        checked={values.loginType === "organization"}
+                        onChange={(e) => updateCardForm("loginType", e)}
                     ></input>
                     <label className="text-sm text-brand-green">
                         Organization
@@ -87,17 +73,10 @@ const CardForm: FC = () => {
                         className="mb-5 ml-5 mr-2"
                         type="radio"
                         value="user"
-                        checked={formInput.loginType === "user"}
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                loginType: e.target.value
-                            })
-                        }
+                        checked={values.loginType === "user"}
+                        onChange={(e) => updateCardForm("loginType", e)}
                     ></input>
-                    <label className="text-sm text-brand-green">
-                        User
-                    </label>
+                    <label className="text-sm text-brand-green">User</label>
                 </div>
 
                 <div>
@@ -106,14 +85,9 @@ const CardForm: FC = () => {
                     </label>
                     <input
                         className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
-                        value={formInput.login}
+                        value={values.login}
                         required
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                login: e.target.value
-                            })
-                        }
+                        onChange={(e) => updateCardForm("login", e)}
                     ></input>
                 </div>
 
@@ -123,14 +97,9 @@ const CardForm: FC = () => {
                     </label>
                     <input
                         className="pl-1 mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
-                        value={formInput.repository}
+                        value={values.repository}
                         required
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                repository: e.target.value
-                            })
-                        }
+                        onChange={(e) => updateCardForm("repository", e)}
                     ></input>
                 </div>
 
@@ -153,14 +122,9 @@ const CardForm: FC = () => {
                     <label className="pr-5 text-center">Network</label>
                     <input
                         className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
-                        value={formInput.network}
+                        value={values.network}
                         required
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                network: e.target.value
-                            })
-                        }
+                        onChange={(e) => updateCardForm("network", e)}
                     ></input>
                 </div>
 
@@ -170,14 +134,9 @@ const CardForm: FC = () => {
                         id="cat1"
                         name="cat1"
                         className="mb-3 bg-brand-teal opacity-[80%] text-center text-brand-gray text-lg"
-                        value={formInput.category1}
+                        value={values.category1}
                         required
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                category1: e.target.value
-                            })
-                        }
+                        onChange={(e) => updateCardForm("category1", e)}
                     >
                         <option value="dao">DAO</option>
                         <option value="defi">DeFi</option>
@@ -192,14 +151,9 @@ const CardForm: FC = () => {
                         id="cat2"
                         name="cat2"
                         className="mb-3 bg-brand-teal opacity-[80%] text-center text-brand-gray text-lg"
-                        value={formInput.category2}
+                        value={values.category2}
                         required
-                        onChange={(e) =>
-                            setFormInput({
-                                ...formInput,
-                                category2: e.target.value
-                            })
-                        }
+                        onChange={(e) => updateCardForm("category2", e)}
                     >
                         <option value="dao">DAO</option>
                         <option value="defi">DeFi</option>
@@ -210,11 +164,11 @@ const CardForm: FC = () => {
                     </select>
                 </div>
                 <button
-                    type="submit"
+                    onClick={nextPage}
                     className="py-2 rounded-lg bg-brand-green text-md text-brand-darkest"
                     disabled={!isVerified}
                 >
-                    Submit
+                    Continue
                 </button>
             </form>
         </div>
