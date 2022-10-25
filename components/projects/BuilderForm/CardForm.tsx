@@ -161,7 +161,7 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
             <div className="my-2 flex flex-row justify-end">
             <button
                 onClick={nextPage}
-                className="p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="w-[120px] p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
                 disabled={!isVerified}
             >
                 Continue
