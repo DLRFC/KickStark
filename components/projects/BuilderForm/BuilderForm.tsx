@@ -4,7 +4,7 @@ import RoadmapForm from "./RoadmapForm"
 import SubmitForm from "./SubmitForm"
 import Success from "./Success"
 
-const ProjectForm: any = () => {
+const BuilderForm: any = () => {
     const [cardFormInput, setCardFormInput] = useState({
         name: "",
         description: "",
@@ -100,4 +100,4 @@ const ProjectForm: any = () => {
     }
 }
 
-export default ProjectForm
+export default BuilderForm

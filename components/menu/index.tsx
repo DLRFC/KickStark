@@ -7,7 +7,7 @@ import { GoTools } from "react-icons/go"
 import MenuItem from "./MenuItem"
 import ProjectPreview from "./ProjectPreview"
 import ProjectCarousel from "../carousel"
-import ProjectForm from "../projects/BuilderForm/BuilderForm"
+import BuilderForm from "../projects/BuilderForm/BuilderForm"
 import InvestorPreview from "./InvestorPreview"
 
 const Menu: FC = () => {
@@ -70,7 +70,7 @@ const Menu: FC = () => {
                     </a>
                 </Link>
             ),
-            component: <ProjectForm />
+            component: <BuilderForm />
         },
         {
             id: 4,
