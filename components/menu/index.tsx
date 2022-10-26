@@ -1,14 +1,14 @@
 import Link from "next/link"
-import React, { FC, useState } from "react"
-import { GiRecycle } from "react-icons/gi"
-import { DiCodeigniter } from "react-icons/di"
-import { GiTakeMyMoney } from "react-icons/gi"
-import { GoTools } from "react-icons/go"
+import React, { FC, useState, useEffect } from "react"
 import MenuItem from "./menuItem"
 import ProjectPreview from "./menuItem/ProjectPreview"
 import ProjectCarousel from "./menuItem/ProjectCarousel"
 import BuilderForm from "./menuItem/BuilderForm"
 import InvestorPreview from "./menuItem/InvestorPreview"
+import { GiRecycle } from "react-icons/gi"
+import { DiCodeigniter } from "react-icons/di"
+import { GiTakeMyMoney } from "react-icons/gi"
+import { GoTools } from "react-icons/go"
 
 const Menu: FC = () => {
     const [Index, setIndex] = useState(1)
