@@ -1,18 +1,19 @@
-import { FC, useState } from "react"
+import { FC, useState, useContext, useEffect } from "react"
 import { connect, getStarknet } from "get-starknet"
 import { Abi, Contract, Signature } from "starknet"
+import { AppContext } from "../context/AppContext"
 
 import kickStarkAbi from "../../abis/kickStarkAbi.json"
 
 const Wallet: FC = () => {
     const [isConnected, setIsConnected] = useState<boolean>(false)
-    const [userAddress, setUserAddress] = useState<any>()
+    const { userAddress, setAppContext } = useContext(AppContext)
+
+    console.log("USERADDRESS", userAddress)
 
     const network = "goerli-alpha"
-    const contractAddress =
-        "0x004992699a49a8ef380462c60228a9cebbcd5a4dcb9bcc58bc8d5981296ec8c5"
-    const validatorAddr =
-        "0x06dbdcf5d22ac87eb14d994a47e38aa5aa2eee2c6e3c0e391f04e14b8106473b"
+    const contractAddress = "0x004992699a49a8ef380462c60228a9cebbcd5a4dcb9bcc58bc8d5981296ec8c5"
+    const validatorAddr = "0x06dbdcf5d22ac87eb14d994a47e38aa5aa2eee2c6e3c0e391f04e14b8106473b"
 
     const connectWallet = async () => {
         console.log("connecting...")
@@ -25,8 +26,7 @@ const Wallet: FC = () => {
                 await wallet.enable({ showModal: true })
                 console.log("wallet", wallet)
                 console.log("wallet.account.address", wallet.account.address)
-                setIsConnected(!!wallet?.isConnected)
-                setUserAddress(wallet.account.address)
+                setAppContext({ userAddress: wallet.account.address, setAppContext: setAppContext })
             }
         } catch (err) {
             console.error(err)
@@ -36,11 +36,7 @@ const Wallet: FC = () => {
     const startProject = async () => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
-            const kickStarkContract = new Contract(
-                kickStarkAbi as Abi,
-                contractAddress,
-                wallet.account
-            )
+            const kickStarkContract = new Contract(kickStarkAbi as Abi, contractAddress, wallet.account)
             return kickStarkContract.start_project(validatorAddr)
         }
     }
@@ -48,11 +44,7 @@ const Wallet: FC = () => {
     const contribute = async () => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
-            const kickStarkContract = new Contract(
-                kickStarkAbi as Abi,
-                contractAddress,
-                wallet.account
-            )
+            const kickStarkContract = new Contract(kickStarkAbi as Abi, contractAddress, wallet.account)
             // kickStarkContract.start_project(validatorAddr)
             return kickStarkContract.contribute(1)
         }
@@ -61,18 +53,14 @@ const Wallet: FC = () => {
     const stagePercentages = async () => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
-            const kickStarkContract = new Contract(
-                kickStarkAbi as Abi,
-                contractAddress,
-                wallet.account
-            )
+            const kickStarkContract = new Contract(kickStarkAbi as Abi, contractAddress, wallet.account)
             return kickStarkContract.stagePercentages(0)
         }
     }
 
     return (
         <>
-            {isConnected && (
+            {userAddress !== null && (
                 <>
                     <button
                         onClick={async () => alert(await stagePercentages())}
@@ -98,7 +86,7 @@ const Wallet: FC = () => {
                 onClick={connectWallet}
                 className="bg-brand-orange text-brand-dark text-md rounded-md px-4 py-2 truncate w-48 h-11"
             >
-                {isConnected ? userAddress : "connect wallet"}
+                {userAddress !== null ? userAddress : "connect wallet"}
             </button>
         </>
     )

@@ -10,5 +10,6 @@ export type Project = {
     loginType: string,
     login: string,
     phaseSummaries: string[],
-    phaseDescriptions: string[][]
+    phaseDescriptions: string[][],
+    builderAddress: string
 }
