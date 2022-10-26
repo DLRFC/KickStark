@@ -1,44 +1,23 @@
-import { NextPage } from "next";
-import Header from "../../components/header";
+import { NextPage } from "next"
+import Header from "../../components/header"
 import React, { useState, Fragment } from "react"
 import { Tab, Listbox, Transition } from "@headlessui/react"
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid"
 import Activity from "../../components/projects/Activity"
 import Progress from "../../components/projects/Progress"
+import { supabase } from "../../utils/supabase"
+import { apollo } from "../../utils/apollo"
+import { gql } from "@apollo/client"
+import { Project } from "../../Types/Project"
 
-const InvestorDashboard: NextPage = () => {
-    const projects: { id: number; name: string; unavailable: boolean }[] = [
-        {
-            id: 1,
-            name: "Deliverable",
-            unavailable: false
-        },
-        {
-            id: 2,
-            name: "Om",
-            unavailable: false
-        },
-        {
-            id: 3,
-            name: "Emergence",
-            unavailable: false
-        },
-        {
-            id: 4,
-            name: "DecentraList",
-            unavailable: false
-        },
-        {
-            id: 5,
-            name: "MxTape",
-            unavailable: false
-        },
-        {
-            id: 6,
-            name: "Parfait",
-            unavailable: false
-        }
-    ]
+type Props = {
+    projects: Project[],
+    githubMetrics: any[]
+}
+const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
+    console.log(projects, githubMetrics)
+
+    
 
     const [selectedProject, setSelectedProject] = useState(projects[0])
 
@@ -49,12 +28,15 @@ const InvestorDashboard: NextPage = () => {
     return (
         <div className="w-screen h-screen circuitBoard">
             <div className="mb-12">
-                <Header title={'contributor dashboard [id?]'} />
+                <Header title={"contributor dashboard [id?]"} />
             </div>
 
             <div className="flex flex-col place-items-center pb-[5%]">
                 <div className="w-[75%] mb-2">
-                    <Listbox value={selectedProject} onChange={setSelectedProject}>
+                    <Listbox
+                        value={selectedProject}
+                        onChange={setSelectedProject}
+                    >
                         <div className="relative mt-1">
                             <Listbox.Button className="text-brand-gray relative w-full cursor-default rounded-lg bg-blue-200/20 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-brand-orange focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-orange sm:text-sm">
                                 <span className="block truncate">
@@ -161,12 +143,16 @@ const InvestorDashboard: NextPage = () => {
                     </Tab.List>
                     <Tab.Panels className="w-[75%] mt-2">
                         <Tab.Panel
-                            className={classNames("rounded-xl bg-brand-gray p-3")}
+                            className={classNames(
+                                "rounded-xl bg-brand-gray p-3"
+                            )}
                         >
                             <Activity />
                         </Tab.Panel>
                         <Tab.Panel
-                            className={classNames("rounded-xl bg-brand-gray p-3")}
+                            className={classNames(
+                                "rounded-xl bg-brand-gray p-3"
+                            )}
                         >
                             <div className="flex justify-center">
                                 <Progress
@@ -204,7 +190,9 @@ const InvestorDashboard: NextPage = () => {
                             </div>
                         </Tab.Panel>
                         <Tab.Panel
-                            className={classNames("rounded-xl bg-brand-gray p-3")}
+                            className={classNames(
+                                "rounded-xl bg-brand-gray p-3"
+                            )}
                         >
                             <div className="flex justify-center">
                                 <img src="feed.png" alt="" />
@@ -218,3 +206,43 @@ const InvestorDashboard: NextPage = () => {
 }
 
 export default InvestorDashboard
+
+export async function getServerSideProps() {
+    const result = await supabase
+        .from("investors")
+        .select(`projects(*)`)
+        .eq("address", "0xf2c16170ad25FA324e40C40757DAB1b6DcA516b0")
+
+    const projects = result.data
+
+    const promises = projects?.map((project) => {
+        return apollo.query({
+            query: gql`
+        {
+          ${project.projects.loginType}(login: "${project.projects.login}") {
+            repository(name: "${project.projects.repository}") {
+                id
+                url
+                pullRequests(last: 5) {
+                  totalCount
+                  edges {
+                    node {
+                      commits {
+                        totalCount
+                      }
+                    }
+                  }
+                }
+              }
+          }
+        }`
+        })
+    })
+
+    const results = await Promise.all(promises!)
+    const githubMetrics = results.map(result => result.data)
+
+    return {
+        props: { projects, githubMetrics }
+    }
+}
