@@ -14,7 +14,8 @@ type Props = {
 }
 
 const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
-    console.log(project, metrics)
+    // console.log("pages")
+    // console.log(project, metrics)
 
     return (
         <div className="w-screen h-screen circuitBoard">
@@ -81,7 +82,7 @@ const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
                 </div>
 
                 <div className="items-center flex justify-center">
-                    <ProgressReport />
+                    <ProgressReport project={project} metrics={metrics}/>
                 </div>
 
             </div>

@@ -2,7 +2,10 @@ import React, { FC } from "react";
 import { CheckIcon, HandThumbUpIcon, UserIcon } from '@heroicons/react/20/solid'
 
 
-const ProgressReport: FC = () => {
+const ProgressReport: FC<any> = ({project, metrics}) => {
+
+  console.log("project", project);
+  console.log("metric", metrics)
 
     const stats = [
         { name: 'Total Subscribers', stat: '71,897' },
@@ -83,6 +86,7 @@ const ProgressReport: FC = () => {
     <div className="flex flex-row">
     <div className="flow-root my-10 mx-10">
     <p className="mb-5 text-xl">Github updates</p>
+    <p className="mb-5 text-xl">Total PRs: {metrics.pullRequests.totalCount}</p>
       <ul role="list" className="-mb-8">
         {timeline.map((event, eventIdx) => (
           <li key={event.id}>
