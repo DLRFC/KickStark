@@ -145,7 +145,7 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
                 <select
                     id="cat2"
                     name="cat2"
-                    className="mb-3 bg-brand-teal opacity-[80%] text-center text-brand-gray text-lg"
+                    className="mb-6 bg-brand-teal opacity-[80%] text-center text-brand-gray text-lg"
                     value={values.category2}
                     required
                     onChange={(e) => updateCardForm("category2", e)}
@@ -158,15 +158,15 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
                     <option value="social">Social</option>
                 </select>
             </div>
-            <div className="my-2 flex flex-row justify-end">
+            {/* <div className="my-2 flex flex-row justify-end"> */}
             <button
                 onClick={nextPage}
-                className="w-[120px] p-2 rounded-lg bg-brand-green text-md text-brand-darkest"
+                className="py-2 rounded-lg bg-brand-green text-md text-brand-darkest"
                 disabled={!isVerified}
             >
                 Continue
             </button>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

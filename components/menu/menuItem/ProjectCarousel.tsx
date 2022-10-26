@@ -1,22 +1,21 @@
 import React, { FC, useState, useEffect } from "react";
-import ProjectList from "../projects/List"; 
 import { IoIosArrowDropleftCircle } from 'react-icons/io'
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 
 const ProjectCarousel: FC = () => {
-    const [currentIndex, setCurrentIndex] = useState(0)
+    // const [currentIndex, setCurrentIndex] = useState(0)
 
-    const carouselInfiniteScroll = () => {
-        if (currentIndex === ProjectList.length-1) {
-            return setCurrentIndex(0)
-        }
-        return setCurrentIndex(currentIndex+1)
-    }
+    // const carouselInfiniteScroll = () => {
+    //     if (currentIndex === ProjectList.length-1) {
+    //         return setCurrentIndex(0)
+    //     }
+    //     return setCurrentIndex(currentIndex+1)
+    // }
 
-    useEffect(() => {
-        const interval = setInterval(() => {carouselInfiniteScroll()}, 5000)
-        return () => clearInterval(interval)
-    })
+    // useEffect(() => {
+    //     const interval = setInterval(() => {carouselInfiniteScroll()}, 5000)
+    //     return () => clearInterval(interval)
+    // })
 
     return (
         // <div className="w-screen p-5 flex-nowrap owerflow-hidden">
