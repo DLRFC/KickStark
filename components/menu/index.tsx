@@ -42,7 +42,7 @@ const Menu: FC = () => {
             id: 2,
             title: "catalogue",
             content:
-                "Browse the exciting new projects being powered by KickStark! Select any project for details and to contribute funding.",
+                "Browse the exciting new projects being powered by KickStark! Select any project to access its details: view project deliverables, track progress, and contribute funding.",
             icon: <DiCodeigniter color="#db872e" fontSize="6em" />,
             link: (
                 <Link href="/catalogue">
@@ -59,7 +59,7 @@ const Menu: FC = () => {
             id: 3,
             title: "builders",
             content:
-                "Start here to create your project profile and get funded! Submitting this form will initialize your project and allow you add deliverables to your project's custom roadmap.",
+                "Start here to create your project profile and get funded! Builders are required to define their project with detailed deliverables and connect their GitHub repository to provide progress accountability. Submitting this form will initialize your project and create its custom roadmap.",
             icon: <GoTools color="#db872e" fontSize="6em" />,
             link: (
                 <Link href="/catalogue">
@@ -76,7 +76,7 @@ const Menu: FC = () => {
             id: 4,
             title: "contributors",
             content:
-                "Some more detail about what to expect when you fund a project. Link to full catalogue page or connect your wallet to access your personal Contributor's Dashboard.",
+                "Contributors can support multiple projects and track the progress and activity of each via a personalized dashboard. If a project fails to deliver a phase of expected improvements, remaining funds will be returned to contributors.",
             icon: <GiTakeMyMoney color="#db872e" fontSize="7em" />,
             link: (
                 <Link href="/catalogue">
