@@ -34,6 +34,7 @@ const Header: FC<HeaderProps> = ({ title }) => {
                     </div>
                     <hr className="border-1 border-brand-green"></hr>
                     <hr className="border-1 border-brand-green"></hr>
+                    <hr className="border-1 border-brand-green"></hr>
                     <hr className="border-1 border-brand-green mb-1"></hr>
                     <hr className="border-1 border-brand-green"></hr>
                 </div>
