@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent, useState } from "react"
+import React, { FC, SyntheticEvent } from "react"
 import { supabase } from "../../../../utils/supabase"
 
 type Props = {
@@ -33,6 +33,9 @@ const SubmitForm: FC<Props> = ({
     async function createProject(e: SyntheticEvent<EventTarget>) {
         e.preventDefault()
 
+        // Needs to be fetched from wallet modal
+        const builderAddress = "0xf2c16170ad25FA324e40C40757DAB1b6DcA516b0"
+
         const fullForm = {
             name: values.name,
             description: values.description,
@@ -43,7 +46,8 @@ const SubmitForm: FC<Props> = ({
             category1: values.category1,
             category2: values.category2,
             phaseSummaries: phaseSummaries,
-            phaseDescriptions: phaseDescriptions
+            phaseDescriptions: phaseDescriptions,
+            builderAddress: builderAddress
         }
 
         try {
