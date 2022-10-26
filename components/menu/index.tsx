@@ -4,11 +4,11 @@ import { GiRecycle } from "react-icons/gi"
 import { DiCodeigniter } from "react-icons/di"
 import { GiTakeMyMoney } from "react-icons/gi"
 import { GoTools } from "react-icons/go"
-import MenuItem from "./MenuItem"
-import ProjectPreview from "./ProjectPreview"
-import ProjectCarousel from "../carousel"
-import BuilderForm from "../projects/BuilderForm/BuilderForm"
-import InvestorPreview from "./InvestorPreview"
+import MenuItem from "./menuItem"
+import ProjectPreview from "./menuItem/ProjectPreview"
+import ProjectCarousel from "./menuItem/ProjectCarousel"
+import BuilderForm from "./menuItem/BuilderForm"
+import InvestorPreview from "./menuItem/InvestorPreview"
 
 const Menu: FC = () => {
     const [Index, setIndex] = useState(1)
