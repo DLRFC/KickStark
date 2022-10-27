@@ -1,6 +1,7 @@
 import { IStarknetWindowObject } from "get-starknet"
 import { FC, Context, Dispatch, SetStateAction, createContext, useState, useEffect } from "react"
 import { connect, getStarknet } from "get-starknet"
+import { useRef } from "react"
 
 type Props = {
     children: React.ReactNode
@@ -22,8 +23,10 @@ const AppContext = createContext<AppContext>(initialAppContext)
 
 const AppContextProvider = ({ children }: Props): JSX.Element => {
     const [appContext, setAppContext] = useState<AppContext>(initialAppContext)
+    const useEffectHasRun = useRef(false)
 
     useEffect(() => {
+        if (useEffectHasRun.current) return
         // Get context from session storage and save to state
         const rawSavedContext = sessionStorage.getItem("appContext")
         const savedContext = rawSavedContext ? JSON.parse(rawSavedContext) : null
@@ -41,12 +44,14 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
                 }
                 updatedAppContext.userAddress = !!wallet?.isConnected ? wallet.account.address : null
                 setAppContext(updatedAppContext)
-                // console.log("One-time useEffect called. updatedAppContext.userAddress:", updatedAppContext.userAddress)
+                console.log("One-time useEffect called. updatedAppContext.userAddress:", updatedAppContext.userAddress)
             })
         })
+
+        useEffectHasRun.current = true
     }, [])
 
-    useEffect(() => {
+    /* useEffect(() => {
         const wallet = getStarknet()
         if (!wallet.isConnected && appContext.userAddress !== null) {
             setAppContext({
@@ -60,7 +65,7 @@ const AppContextProvider = ({ children }: Props): JSX.Element => {
             })
         }
         // console.log(`Non-dependent useEffect called. appContext.userAddress: ${appContext.userAddress}`)
-    })
+    }) */
 
     useEffect(() => {
         sessionStorage.setItem("appContext", JSON.stringify(appContext))
