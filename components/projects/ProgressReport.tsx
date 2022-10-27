@@ -2,10 +2,10 @@ import React, { FC } from "react";
 import { CheckIcon, HandThumbUpIcon, UserIcon } from '@heroicons/react/20/solid'
 
 
-const ProgressReport: FC<any> = ({project, metrics}) => {
+const ProgressReport: FC<any> = ({project, githubMetrics}) => {
 
   console.log("project", project);
-  console.log("metric", metrics)
+  console.log("metric", githubMetrics)
 
     const stats = [
         { name: 'Total Subscribers', stat: '71,897' },
@@ -86,7 +86,7 @@ const ProgressReport: FC<any> = ({project, metrics}) => {
     <div className="flex flex-row">
     <div className="flow-root my-10 mx-10">
     <p className="mb-5 text-xl">Github updates</p>
-    <p className="mb-5 text-xl">Total PRs: {metrics.pullRequests.totalCount}</p>
+    <p className="mb-5 text-xl">Merged PRs: {githubMetrics.mergedPullRequests} / Total Commits: {githubMetrics.commits}</p>
       <ul role="list" className="-mb-8">
         {timeline.map((event, eventIdx) => (
           <li key={event.id}>
