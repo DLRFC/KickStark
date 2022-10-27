@@ -26,7 +26,7 @@ const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
     }
 
     return (
-        <div className="w-screen h-screen circuitBoard">
+        <div className="w-auto h-auto circuitBoard">
             <div className="mb-12">
                 <Header title={"contributor dashboard [id?]"} />
             </div>
