@@ -4,7 +4,7 @@ import Wallet from "../components/wallet"
 
 const Home: NextPage = () => {
   return (
-    <div className="w-screen h-screen circuitBoard">
+    <div className="w-auto h-auto circuitBoard">
       <div className="w-full flex justify-between pt-[4%] pr-[8%]">
         <div></div>
         <div className=""> 

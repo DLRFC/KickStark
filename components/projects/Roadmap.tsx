@@ -21,7 +21,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
         <div className="flex flex-col items-center">
             <div className="w-[85%] bg-brand-orange opacity-[75%] rounded-lg shadow-card shadow-brand-darkest">
                 <ol className="items-center text-center text-brand-darkest sm:flex px-10 pt-10 pb-4">
-                    <li className="relative mb-6 sm:mb-0">
+                    <li className="relative max-w-[20%] mb-6 sm:mb-0">
                         <h3 className="pb-4 text-lg font-semibold">Phase 1</h3>
                         <div className="flex items-center">
                             <div className="hidden sm:flex w-full bg-white h-0"></div>
@@ -45,7 +45,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
                             </button>
                         </div>
                     </li>
-                    <li className="relative mb-6 sm:mb-0">
+                    <li className="relative max-w-[20%] mb-6 sm:mb-0">
                         <h3 className="pb-4 text-lg font-semibold">Phase 2</h3>
                         <div className="flex items-center">
                             <div className="hidden sm:flex w-full bg-white h-1"></div>
@@ -69,7 +69,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
                             </button>
                         </div>
                     </li>
-                    <li className="relative mb-6 sm:mb-0">
+                    <li className="relative max-w-[20%] mb-6 sm:mb-0">
                         <h3 className="pb-4 text-lg font-semibold">Phase 3</h3>
                         <div className="flex items-center">
                             <div className="hidden sm:flex w-full bg-white h-1"></div>
@@ -93,7 +93,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
                             </button>
                         </div>
                     </li>
-                    <li className="relative mb-6 sm:mb-0">
+                    <li className="relative max-w-[20%] mb-6 sm:mb-0">
                         <h3 className="pb-4 text-lg font-semibold">Phase 4</h3>
                         <div className="flex items-center">
                             <div className="hidden sm:flex w-full bg-white h-1"></div>
@@ -117,7 +117,7 @@ const Roadmap: FC<RoadmapProps> = ({ phaseSummaries, phaseDescriptions}) => {
                             </button>
                         </div>
                     </li>
-                    <li className="relative mb-6 sm:mb-0">
+                    <li className="relative max-w-[20%] mb-6 sm:mb-0">
                         <h3 className="pb-4 text-lg font-semibold">Phase 5</h3>
                         <div className="flex items-center">
                             <div className="hidden sm:flex w-full bg-white h-1"></div>
