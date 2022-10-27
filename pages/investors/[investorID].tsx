@@ -186,7 +186,7 @@ export async function getServerSideProps() {
         {
           ${project.projects.loginType}(login: "${project.projects.login}") {
             repository(name: "${project.projects.repository}") {
-                object(expression: "master") {
+                object(expression: "main") {
                     ... on Commit {
                       history {
                         totalCount
