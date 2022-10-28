@@ -13,6 +13,7 @@ type Props = {
         network: string
         category1: string
         category2: string
+        twitter: string
     }
 }
 
@@ -75,9 +76,7 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
             </div>
 
             <div>
-                <label className="pr-5 text-center">
-                    Github Org or User Name
-                </label>
+                <label className="pr-5 text-center">Github Org or User Name</label>
                 <input
                     className="pl-1 mb-3 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                     value={values.login}
@@ -87,9 +86,7 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
             </div>
 
             <div>
-                <label className="pr-5 text-center">
-                    Github Repository Name
-                </label>
+                <label className="pr-5 text-center">Github Repository Name</label>
                 <input
                     className="pl-1 mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
                     value={values.repository}
@@ -106,9 +103,7 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
                 Verify Github
             </button>
 
-            <div className="text-brand-green text-sm text-center pb-4">
-                {message}
-            </div>
+            <div className="text-brand-green text-sm text-center pb-4">{message}</div>
 
             <hr className="border-1 border-brand-orange"></hr>
             <hr className="border-1 border-brand-orange mb-6"></hr>
@@ -157,6 +152,15 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
                     <option value="privacy">Privacy</option>
                     <option value="social">Social</option>
                 </select>
+            </div>
+            <div>
+                <label className="pr-5 text-center">Twitter Account (without @)</label>
+                <input
+                    className="pl-1 mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
+                    value={values.repository}
+                    required
+                    onChange={(e) => updateCardForm("twitter", e)}
+                ></input>
             </div>
             {/* <div className="my-2 flex flex-row justify-end"> */}
             <button
