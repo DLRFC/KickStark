@@ -8,10 +8,10 @@ import Progress from "../../components/projects/Progress"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
 import { gql } from "@apollo/client"
-import { Project } from "../../Types/Project"
+import { Timeline } from "react-twitter-widgets"
 
 type Props = {
-    projects: Project[]
+    projects: any[]
     githubMetrics: any[]
 }
 const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
@@ -159,8 +159,11 @@ const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
                             </div>
                         </Tab.Panel>
                         <Tab.Panel className={classNames("rounded-xl bg-brand-gray p-3")}>
-                            <div className="flex justify-center">
-                                <img src="feed.png" alt="" />
+                            <div className="flex flex-col items-center p-10">
+                                <h1>Twitter Feed</h1>
+                                <div className="mt-5 h-[500px] overflow-y-scroll p-0 w-[1000px]">
+                                    <Timeline dataSource={{ sourceType: "profile", screenName: selectedProject.projects.twitter}} />
+                                </div>
                             </div>
                         </Tab.Panel>
                     </Tab.Panels>
