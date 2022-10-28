@@ -4,7 +4,11 @@ import RoadmapForm from "./RoadmapForm"
 import SubmitForm from "./SubmitForm"
 import Success from "./Success"
 
-const BuilderForm: FC = () => {
+type Props = {
+    userAddress: string | null
+}
+
+const BuilderForm: FC<Props> = ({userAddress}) => {
     const [cardFormInput, setCardFormInput] = useState({
         name: "",
         description: "",
@@ -88,6 +92,7 @@ const BuilderForm: FC = () => {
                         values={cardFormInput}
                         phaseSummaries={phaseSummaries}
                         phaseDescriptions={phaseDescriptions}
+                        userAddress={userAddress}
                     />
                 )
             case 8:

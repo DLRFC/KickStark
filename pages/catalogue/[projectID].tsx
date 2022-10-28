@@ -13,14 +13,13 @@ import { AppContext } from "../../components/context/AppContext"
 import kickStarkAbi from "../../abis/kickStarkAbi.json"
 import { kickStarkAddr } from "../../config/goerli-alpha"
 
+
 type Props = {
     project: Project
-    metrics: object
+    githubMetrics: object
 }
 
-const ProjectProfile: NextPage<Props> = ({ project, metrics }) => {
-    // console.log("pages")
-    // console.log(project, metrics)
+const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
 
     const [projectIsClosed, setProjectIsClosed] = useState<boolean>(true)
     const { userAddress, setAppContext } = useContext(AppContext)
@@ -63,7 +62,7 @@ const ProjectProfile: NextPage<Props> = ({ project, metrics }) => {
     }
 
     return (
-        <div className="w-screen h-screen circuitBoard">
+        <div className="w-auto h-auto circuitBoard">
             <div className="mb-12">
                 <Header title={project.name} />
             </div>
@@ -133,7 +132,7 @@ const ProjectProfile: NextPage<Props> = ({ project, metrics }) => {
                 </div>
 
                 <div className="items-center flex justify-center">
-                    <ProgressReport project={project} metrics={metrics} />
+                    <ProgressReport project={project} githubMetrics={githubMetrics} />
                 </div>
             </div>
         </div>
@@ -146,6 +145,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { projectID } = context.params!
     let project
     let metrics
+    let githubMetrics
 
     try {
         const result = await supabase.from("projects").select().eq("id", projectID)
@@ -159,18 +159,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             {
               ${project.loginType}(login: "${project.login}") {
                 repository(name: "${project.repository}") {
-                    id
-                    url
-                    pullRequests(last: 5) {
-                      totalCount
-                      edges {
-                        node {
-                          commits {
+                    object(expression: "main") {
+                        ... on Commit {
+                          history {
+                            totalCount
+                          }
+                        }
+                        repository {
+                          pullRequests(states: MERGED) {
                             totalCount
                           }
                         }
                       }
-                    }
                   }
               }
             }`
@@ -181,6 +181,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             } else if (project.loginType === "user") {
                 metrics = data.user.repository
             }
+
+            const mergedPullRequests = metrics.object.repository.pullRequests.totalCount
+            const commits = metrics.object.history.totalCount
+
+            githubMetrics = {
+                mergedPullRequests: mergedPullRequests,
+                commits: commits
+            }
         }
     } catch (error) {
         console.log("Error", error)
@@ -189,7 +197,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
         props: {
             project,
-            metrics
+            githubMetrics
         }
     }
 }

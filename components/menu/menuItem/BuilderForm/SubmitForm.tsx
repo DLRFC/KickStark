@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent, useState } from "react"
+import React, { FC, SyntheticEvent } from "react"
 import { supabase } from "../../../../utils/supabase"
 
 type Props = {
@@ -16,6 +16,7 @@ type Props = {
     }
     phaseSummaries: string[]
     phaseDescriptions: string[][]
+    userAddress: string | null
 }
 
 const SubmitForm: FC<Props> = ({
@@ -23,7 +24,8 @@ const SubmitForm: FC<Props> = ({
     previousStep,
     values,
     phaseSummaries,
-    phaseDescriptions
+    phaseDescriptions,
+    userAddress
 }) => {
     function previousPage(e: SyntheticEvent) {
         e.preventDefault()
@@ -43,7 +45,8 @@ const SubmitForm: FC<Props> = ({
             category1: values.category1,
             category2: values.category2,
             phaseSummaries: phaseSummaries,
-            phaseDescriptions: phaseDescriptions
+            phaseDescriptions: phaseDescriptions,
+            builderAddress: userAddress
         }
 
         try {

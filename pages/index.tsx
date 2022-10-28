@@ -1,10 +1,14 @@
 import type { NextPage } from "next"
+import { useContext } from "react"
 import Menu from "../components/menu"
 import Wallet from "../components/wallet"
+import { AppContext } from "../components/context/AppContext"
 
 const Home: NextPage = () => {
+  const { userAddress } = useContext(AppContext)
+
   return (
-    <div className="w-screen h-screen circuitBoard">
+    <div className="w-auto h-auto circuitBoard">
       <div className="w-full flex justify-between pt-[4%] pr-[8%]">
         <div></div>
         <div className=""> 
@@ -13,7 +17,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className="">
-        <Menu />
+        <Menu userAddress={userAddress} />
       </div>
 
       <div className="flex flex-row justify-center bg-brand-orange w-full fixed bottom-0">
@@ -21,7 +25,7 @@ const Home: NextPage = () => {
         <div className="flex items-center">
           <svg width="200px" height="40px" viewBox="0 0 490 106" version="1.1" xmlns="http://www.w3.org/2000/svg">
               <title>StarkNet logo white</title>
-              <g id="StarkNet-logo-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="StarkNet-logo-white" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                   <g id="starknet-logo" transform="translate(4.000000, 5.000000)" fill-rule="nonzero">
                       <g id="Group-16">
                           <g id="Group-3" fill="#29296E">
