@@ -15,6 +15,7 @@ const BuilderForm: FC<Props> = ({userAddress}) => {
         loginType: "organization",
         login: "",
         repository: "",
+        twitter: "",
         network: "",
         category1: "DAO",
         category2: "Privacy"

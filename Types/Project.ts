@@ -12,4 +12,5 @@ export type Project = {
     phaseSummaries: string[],
     phaseDescriptions: string[][],
     builderAddress: string
+    twitter: string
 }

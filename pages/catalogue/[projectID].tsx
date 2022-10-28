@@ -7,12 +7,12 @@ import ProgressReport from "../../components/projects/ProgressReport"
 import Roadmap from "../../components/projects/Roadmap"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
+
 import { gql } from "@apollo/client"
 import { Project } from "../../Types/Project"
 import { AppContext } from "../../components/context/AppContext"
 import kickStarkAbi from "../../abis/kickStarkAbi.json"
 import { kickStarkAddr } from "../../config/goerli-alpha"
-
 
 type Props = {
     project: Project
@@ -20,7 +20,6 @@ type Props = {
 }
 
 const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
-
     const [projectIsClosed, setProjectIsClosed] = useState<boolean>(true)
     const { userAddress, setAppContext } = useContext(AppContext)
 
@@ -146,6 +145,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     let project
     let metrics
     let githubMetrics
+    let tweets
 
     try {
         const result = await supabase.from("projects").select().eq("id", projectID)
@@ -189,6 +189,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
                 mergedPullRequests: mergedPullRequests,
                 commits: commits
             }
+
         }
     } catch (error) {
         console.log("Error", error)
