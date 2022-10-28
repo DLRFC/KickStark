@@ -6,16 +6,14 @@ import Roadmap from "../../components/projects/Roadmap"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
 import { gql } from "@apollo/client"
-import { Project} from "../../Types/Project"
+import { Project } from "../../Types/Project"
 
 type Props = {
     project: Project
-    metrics: object
+    githubMetrics: object
 }
 
-const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
-    // console.log("pages")
-    // console.log(project, metrics)
+const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
 
     return (
         <div className="w-auto h-auto circuitBoard">
@@ -26,38 +24,26 @@ const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
                 <div className="w-[40%]">
                     <div className="text-3xl">Building on {project.network}</div>
                     <div className="text-xl">
-                        <span className="text-3xl text-brand-green">
-                            {" "}
-                            &bull;{" "}
-                        </span>
+                        <span className="text-3xl text-brand-green"> &bull; </span>
                         {project.category1}
                     </div>
                     <div className="text-xl">
-                        <span className="text-3xl text-brand-green">
-                            {" "}
-                            &bull;{" "}
-                        </span>
+                        <span className="text-3xl text-brand-green"> &bull; </span>
                         {project.category2}
                     </div>
                 </div>
                 <div className="w-[75%] text-right">
-                    <p>{project.description}
-                    </p>
+                    <p>{project.description}</p>
                 </div>
             </div>
 
             <div className="w-full flex justify-center">
-                <Roadmap
-                    phaseDescriptions={project.phaseDescriptions}
-                    phaseSummaries={project.phaseSummaries}
-                />
+                <Roadmap phaseDescriptions={project.phaseDescriptions} phaseSummaries={project.phaseSummaries} />
             </div>
 
             <div className="flex mx-[10%] my-[5%]">
                 <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">
-                    <div className="my-10 text-brand-green text-2xl font-bold text-center">
-                        Invest
-                    </div>
+                    <div className="my-10 text-brand-green text-2xl font-bold text-center">Invest</div>
 
                     <div className="justify-between p-8">
                         <div className="flex flex-col pb-6">
@@ -82,9 +68,8 @@ const ProjectProfile: NextPage<Props> = ({project, metrics}) => {
                 </div>
 
                 <div className="items-center flex justify-center">
-                    <ProgressReport project={project} metrics={metrics}/>
+                    <ProgressReport project={project} githubMetrics={githubMetrics} />
                 </div>
-
             </div>
         </div>
     )
@@ -96,12 +81,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { projectID } = context.params!
     let project
     let metrics
+    let githubMetrics
 
     try {
-        const result = await supabase
-            .from("projects")
-            .select()
-            .eq("id", projectID)
+        const result = await supabase.from("projects").select().eq("id", projectID)
 
         if (result.data) {
             project = result.data[0]
@@ -112,18 +95,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             {
               ${project.loginType}(login: "${project.login}") {
                 repository(name: "${project.repository}") {
-                    id
-                    url
-                    pullRequests(last: 5) {
-                      totalCount
-                      edges {
-                        node {
-                          commits {
+                    object(expression: "main") {
+                        ... on Commit {
+                          history {
+                            totalCount
+                          }
+                        }
+                        repository {
+                          pullRequests(states: MERGED) {
                             totalCount
                           }
                         }
                       }
-                    }
                   }
               }
             }`
@@ -134,6 +117,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             } else if (project.loginType === "user") {
                 metrics = data.user.repository
             }
+
+            const mergedPullRequests = metrics.object.repository.pullRequests.totalCount
+            const commits = metrics.object.history.totalCount
+
+            githubMetrics = {
+                mergedPullRequests: mergedPullRequests,
+                commits: commits
+            }
         }
     } catch (error) {
         console.log("Error", error)
@@ -142,7 +133,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
         props: {
             project,
-            metrics
+            githubMetrics
         }
     }
 }

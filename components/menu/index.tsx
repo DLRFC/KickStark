@@ -1,5 +1,5 @@
 import Link from "next/link"
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState, useContext} from "react"
 import MenuItem from "./menuItem"
 import ProjectPreview from "./menuItem/ProjectPreview"
 import ProjectCarousel from "./menuItem/ProjectCarousel"
@@ -10,7 +10,11 @@ import { DiCodeigniter } from "react-icons/di"
 import { GiTakeMyMoney } from "react-icons/gi"
 import { GoTools } from "react-icons/go"
 
-const Menu: FC = () => {
+type Props = {
+    userAddress: string | null
+}
+
+const Menu: FC<Props> = ({userAddress}) => {
     const [Index, setIndex] = useState(1)
 
     const menuItems: {
@@ -70,7 +74,7 @@ const Menu: FC = () => {
                     </a>
                 </Link>
             ),
-            component: <BuilderForm />
+            component: <BuilderForm userAddress={userAddress} />
         },
         {
             id: 4,

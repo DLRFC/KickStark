@@ -11,13 +11,11 @@ import { gql } from "@apollo/client"
 import { Project } from "../../Types/Project"
 
 type Props = {
-    projects: Project[],
+    projects: Project[]
     githubMetrics: any[]
 }
-const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
+const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
     console.log(projects, githubMetrics)
-
-    
 
     const [selectedProject, setSelectedProject] = useState(projects[0])
 
@@ -33,20 +31,12 @@ const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
 
             <div className="flex flex-col place-items-center pb-[5%]">
                 <div className="w-[75%] mb-2">
-                    <Listbox
-                        value={selectedProject}
-                        onChange={setSelectedProject}
-                    >
+                    <Listbox value={selectedProject} onChange={setSelectedProject}>
                         <div className="relative mt-1">
                             <Listbox.Button className="text-brand-gray relative w-full cursor-default rounded-lg bg-blue-200/20 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-brand-orange focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-orange sm:text-sm">
-                                <span className="block truncate">
-                                    {selectedProject.name}
-                                </span>
+                                <span className="block truncate">{selectedProject.name}</span>
                                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                    <ChevronUpDownIcon
-                                        className="h-5 w-5 text-gray-400"
-                                        aria-hidden="true"
-                                    />
+                                    <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
                                 </span>
                             </Listbox.Button>
                             <Transition
@@ -61,9 +51,7 @@ const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
                                             key={projectIdx}
                                             className={({ active }) =>
                                                 `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                                                    active
-                                                        ? "bg-brand-green"
-                                                        : "text-gray-900"
+                                                    active ? "bg-brand-green" : "text-gray-900"
                                                 }`
                                             }
                                             value={project}
@@ -72,21 +60,14 @@ const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
                                                 <>
                                                     <span
                                                         className={`block truncate ${
-                                                            selected
-                                                                ? "font-medium"
-                                                                : "font-normal"
+                                                            selected ? "font-medium" : "font-normal"
                                                         }`}
                                                     >
-                                                        <span className="text-2xl">
-                                                            {project.name}
-                                                        </span>
+                                                        <span className="text-2xl">{project.name}</span>
                                                     </span>
                                                     {selected ? (
                                                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
-                                                            <CheckIcon
-                                                                className="h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
+                                                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
                                                         </span>
                                                     ) : null}
                                                 </>
@@ -142,24 +123,12 @@ const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
                         </Tab>
                     </Tab.List>
                     <Tab.Panels className="w-[75%] mt-2">
-                        <Tab.Panel
-                            className={classNames(
-                                "rounded-xl bg-brand-gray p-3"
-                            )}
-                        >
+                        <Tab.Panel className={classNames("rounded-xl bg-brand-gray p-3")}>
                             <Activity />
                         </Tab.Panel>
-                        <Tab.Panel
-                            className={classNames(
-                                "rounded-xl bg-brand-gray p-3"
-                            )}
-                        >
+                        <Tab.Panel className={classNames("rounded-xl bg-brand-gray p-3")}>
                             <div className="flex justify-center">
-                                <Progress
-                                    title={"Stage 1"}
-                                    desc="Here is the stage description"
-                                    percent={88}
-                                />
+                                <Progress title={"Stage 1"} desc="Here is the stage description" percent={88} />
                                 <Progress
                                     title={"Stage 2"}
                                     desc="Impedit quo minus id quod maxime placeat facere possimus, omnis"
@@ -189,11 +158,7 @@ const InvestorDashboard: NextPage<Props> = ({projects, githubMetrics}) => {
                                 />
                             </div>
                         </Tab.Panel>
-                        <Tab.Panel
-                            className={classNames(
-                                "rounded-xl bg-brand-gray p-3"
-                            )}
-                        >
+                        <Tab.Panel className={classNames("rounded-xl bg-brand-gray p-3")}>
                             <div className="flex justify-center">
                                 <img src="feed.png" alt="" />
                             </div>
@@ -221,18 +186,18 @@ export async function getServerSideProps() {
         {
           ${project.projects.loginType}(login: "${project.projects.login}") {
             repository(name: "${project.projects.repository}") {
-                id
-                url
-                pullRequests(last: 5) {
-                  totalCount
-                  edges {
-                    node {
-                      commits {
+                object(expression: "main") {
+                    ... on Commit {
+                      history {
+                        totalCount
+                      }
+                    }
+                    repository {
+                      pullRequests(states: MERGED) {
                         totalCount
                       }
                     }
                   }
-                }
               }
           }
         }`
@@ -240,7 +205,12 @@ export async function getServerSideProps() {
     })
 
     const results = await Promise.all(promises!)
-    const githubMetrics = results.map(result => result.data)
+    const githubMetrics = results.map((result) => {
+        return {
+            mergedPullRequests: result.data.organization.repository.object.repository.pullRequests.totalCount,
+            commits: result.data.organization.repository.object.history.totalCount
+        }
+    })
 
     return {
         props: { projects, githubMetrics }
