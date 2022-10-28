@@ -16,6 +16,7 @@ type Props = {
     }
     phaseSummaries: string[]
     phaseDescriptions: string[][]
+    userAddress: string | null
 }
 
 const SubmitForm: FC<Props> = ({
@@ -23,7 +24,8 @@ const SubmitForm: FC<Props> = ({
     previousStep,
     values,
     phaseSummaries,
-    phaseDescriptions
+    phaseDescriptions,
+    userAddress
 }) => {
     function previousPage(e: SyntheticEvent) {
         e.preventDefault()
@@ -32,9 +34,6 @@ const SubmitForm: FC<Props> = ({
 
     async function createProject(e: SyntheticEvent<EventTarget>) {
         e.preventDefault()
-
-        // Needs to be fetched from wallet modal
-        const builderAddress = "0xf2c16170ad25FA324e40C40757DAB1b6DcA516b0"
 
         const fullForm = {
             name: values.name,
@@ -47,7 +46,7 @@ const SubmitForm: FC<Props> = ({
             category2: values.category2,
             phaseSummaries: phaseSummaries,
             phaseDescriptions: phaseDescriptions,
-            builderAddress: builderAddress
+            builderAddress: userAddress
         }
 
         try {

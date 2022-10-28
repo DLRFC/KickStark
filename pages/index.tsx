@@ -1,8 +1,12 @@
 import type { NextPage } from "next"
+import { useContext } from "react"
 import Menu from "../components/menu"
 import Wallet from "../components/wallet"
+import { AppContext } from "../components/context/AppContext"
 
 const Home: NextPage = () => {
+  const { userAddress } = useContext(AppContext)
+
   return (
     <div className="w-auto h-auto circuitBoard">
       <div className="w-full flex justify-between pt-[4%] pr-[8%]">
@@ -13,7 +17,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className="">
-        <Menu />
+        <Menu userAddress={userAddress} />
       </div>
 
       <div className="flex flex-row justify-center bg-brand-orange w-full fixed bottom-0">
