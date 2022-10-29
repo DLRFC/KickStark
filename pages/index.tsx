@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="w-auto h-auto circuitBoard">
-      <div className="w-full flex justify-between pt-[4%] pr-[8%]">
+      <div className="w-full flex justify-between pt-[3%] pr-[8%]">
         <div></div>
         <div className=""> 
           <Wallet />
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex flex-row justify-center bg-brand-orange w-full fixed bottom-0">
-        <p className="text-white text-lg py-5 pr-2">Powered by</p>
+        <p className="text-white text-lg py-4 pr-2">Powered by</p>
         <div className="flex items-center">
           <svg width="200px" height="40px" viewBox="0 0 490 106" version="1.1" xmlns="http://www.w3.org/2000/svg">
               <title>StarkNet logo white</title>
