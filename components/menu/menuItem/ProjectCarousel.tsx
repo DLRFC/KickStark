@@ -32,32 +32,32 @@ const ProjectCarousel: FC = () => {
     const handleViewNext = () => (Featured === lastIndex ? (setFeatured(0)) : (setFeatured(Featured + 1)))
 
     return (   
-        <div className="flex items-center mt-[10%]">
-            <div onClick={() => handleViewPrev()} className="pt-[23%]">
+        <div className="flex items-center mt-[6%] ml-[5%]">
+            <div onClick={() => handleViewPrev()} className="pt-[6%]">
                 <IoIosArrowDropleftCircle color="#db872e" fontSize="3.5em" />
             </div>
 
             <ul className="flex">
                 <li>
                     {Featured === 0 ? (
-                        <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg opacity-[50%]">{ProjectList[ProjectList.length - 1]}</div> 
+                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[ProjectList.length - 1]}</div> 
                     ) : (
-                        <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg opacity-[50%]">{ProjectList[Featured - 1]}</div>
+                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[Featured - 1]}</div>
                     )}
                 </li>
                 <li>
-                    <div className="h-[450px] w-[325px] mx-4 bg-brand-gray rounded-lg">{ProjectList[Featured]}</div>
+                    <div className="h-[525px] w-[350px] pt-[13%] flex justify-center bg-brand-darker opacity-[90%] border-2 border-brand-green rounded-lg shadow-card shadow-brand-green/80">{ProjectList[Featured]}</div>
                 </li>
                 <li>
                     {Featured === lastIndex ? (
-                        <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg opacity-[50%]">{ProjectList[0]}</div>
+                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[0]}</div>
                     ) : (
-                        <div className="h-[400px] w-[275px] mx-4 bg-brand-gray rounded-lg opacity-[50%]">{ProjectList[Featured + 1]}</div>
+                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[Featured + 1]}</div>
                     )}
                 </li>
             </ul>
 
-            <div onClick={() => handleViewNext()} className="pt-[23%]">
+            <div onClick={() => handleViewNext()} className="pt-[6%] pl-4">
                 <IoIosArrowDroprightCircle color="#db872e" fontSize="3.5em" />
             </div>        
 

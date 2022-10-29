@@ -39,7 +39,7 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                         </div>                       
                     </div>
 
-                    <div className="grid py-6">
+                    <div className="grid py-4">
                         <div className="z-0 col-start-1 row-start-1 h-[350px] w-full mt-16 bg-brand-teal opacity-[40%]">
 
                         </div>
@@ -56,7 +56,7 @@ const MenuItem: FC<MenuItemProps> = ({ title, content, icon, link, component, Id
                         <div className="z-10 col-start-1 row-start-1 w-[63%] h-[350px] mt-[6%] ml-[30%] bg-brand-darker border-4 border-brand-orange rounded-lg shadow-menuContent shadow-brand-green/80"></div>
                         <div className="z-30 col-start-1 row-start-1 w-[63%] h-[350px] mt-[6%] ml-[30%] flex flex-col justify-center place-items-center">
                             {component}
-                            <div className="pt-[5%] pl-[45%] text-brand-green text-center">{link}</div>                       
+                            <div className="pt-[4%] pl-[45%] text-brand-green text-center">{link}</div>                       
                         </div>                        
                     </div>
   
