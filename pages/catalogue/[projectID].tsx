@@ -65,8 +65,8 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
             <div className="mb-12">
                 <Header title={project.name} />
             </div>
-            <div className="flex pl-[15%] pr-[23%] pb-16 text-lg text-brand-gray">
-                <div className="w-[40%]">
+            <div className="flex pl-[15%] pr-[20%] pb-16 text-lg text-brand-gray">
+                <div className="w-[50%]">
                     <div className="text-3xl">Building on {project.network}</div>
                     <div className="text-xl">
                         <span className="text-3xl text-brand-green"> &bull; </span>
@@ -77,7 +77,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                         {project.category2}
                     </div>
                 </div>
-                <div className="w-[75%] text-right">
+                <div className="w-[75%] text-left">
                     <p>{project.description}</p>
                 </div>
             </div>
