@@ -20,9 +20,11 @@ const FullCatalogue: NextPage<Props> = ({projects}) => {
       <div className="grid grid-cols-4 w-full px-[14%] py-[2%] justify-items-center">
         {projects.map((project) => {
           return (
-            <Card
-              project={project}
-            />
+            <div className="pb-16">
+              <Card
+                project={project}
+              />
+            </div>
           );
         })}
       </div>
