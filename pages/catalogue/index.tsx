@@ -13,7 +13,7 @@ const FullCatalogue: NextPage<Props> = ({projects}) => {
   return (
     <div className="w-auto h-auto circuitBoard">
       <Header title="catalogue" />
-      <div className="w-full text-right pr-[20%] pt-2 pb-6 text-brand-gray opacity-[70%] text-md ">
+      <div className="w-full text-right pr-[20%] pt-2 pb-6 text-brand-gray text-md ">
         <p>Select any project to view details. </p>
       </div>
 
