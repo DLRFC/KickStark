@@ -157,7 +157,7 @@ const CardForm: FC<Props> = ({ nextStep, updateCardForm, values }) => {
                 <label className="pr-5 text-center">Twitter Account (without @)</label>
                 <input
                     className="pl-1 mb-6 bg-brand-teal opacity-[80%] text-brand-gray text-lg"
-                    value={values.repository}
+                    // value={values.repository}
                     required
                     onChange={(e) => updateCardForm("twitter", e)}
                 ></input>

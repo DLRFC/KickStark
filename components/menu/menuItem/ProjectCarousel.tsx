@@ -40,19 +40,19 @@ const ProjectCarousel: FC = () => {
             <ul className="flex">
                 <li>
                     {Featured === 0 ? (
-                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[ProjectList.length - 1]}</div> 
+                        <div className="opacity-[70%] pt-[27%] px-3">{ProjectList[ProjectList.length - 1]}</div> 
                     ) : (
-                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[Featured - 1]}</div>
+                        <div className="opacity-[70%] pt-[27%] px-3">{ProjectList[Featured - 1]}</div>
                     )}
                 </li>
                 <li>
-                    <div className="h-[525px] w-[350px] pt-[13%] flex justify-center bg-brand-darker opacity-[90%] border-2 border-brand-green rounded-lg shadow-card shadow-brand-green/80">{ProjectList[Featured]}</div>
+                    <div className="h-[525px] w-[350px] pt-[13%] flex justify-center bg-brand-darker border-2 border-brand-green rounded-lg shadow-card shadow-brand-green/80">{ProjectList[Featured]}</div>
                 </li>
                 <li>
                     {Featured === lastIndex ? (
-                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[0]}</div>
+                        <div className="opacity-[70%] pt-[27%] px-3">{ProjectList[0]}</div>
                     ) : (
-                        <div className="opacity-[70%] pt-[25%] px-3">{ProjectList[Featured + 1]}</div>
+                        <div className="opacity-[70%] pt-[27%] px-3">{ProjectList[Featured + 1]}</div>
                     )}
                 </li>
             </ul>
