@@ -148,7 +148,7 @@
     },
     {
         "inputs": [],
-        "name": "isClosed",
+        "name": "isOpen",
         "outputs": [
             {
                 "name": "bool",
