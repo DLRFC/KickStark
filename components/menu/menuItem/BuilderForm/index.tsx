@@ -101,7 +101,7 @@ const BuilderForm: FC<Props> = ({userAddress}) => {
         }
     }
     return (
-        <div className="mt-[35%] p-5 rounded-lg bg-brand-darker text-brand-orange text-xl w-[650px] minH-[600px]">
+        <div className="mt-[38%] p-5 rounded-lg bg-brand-darker text-brand-orange text-xl w-[650px] minH-[600px]">
             {renderFormComponent()}
         </div>
     )
