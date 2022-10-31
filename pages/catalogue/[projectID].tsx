@@ -7,6 +7,7 @@ import ProgressReport from "../../components/projects/ProgressReport"
 import Roadmap from "../../components/projects/Roadmap"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
+import { BigNumber } from "ethers"
 
 import { gql } from "@apollo/client"
 import { Project } from "../../Types/Project"
@@ -21,11 +22,18 @@ type Props = {
 
 const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
     const [projectIsOpen, setProjectIsOpen] = useState<boolean>(false)
+    const [managerBalance, setManagerBalance] = useState<string>("0")
+    const [stage, setStage] = useState<number>(0)
+    const [txCount, setTxCount] = useState<number>(0) // Used to trigger page rendering after txs
     const { userAddress, setAppContext } = useContext(AppContext)
 
     useEffect(() => {
         fetchProjectIsOpen()
-    }, [])
+        fetchStage()
+        fetchmanagerBalance()
+    }, [txCount])
+
+    // Read functions
 
     const fetchProjectIsOpen = async () => {
         const starknet = getStarknet()
@@ -33,7 +41,24 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const isOpen = await kickStarkContract.isOpen()
         const convertedIsOpen = isOpen == true
         setProjectIsOpen(convertedIsOpen)
-        console.log("Project open?", convertedIsOpen)
+        console.log("Project open?:", convertedIsOpen)
+    }
+
+    const fetchStage = async () => {
+        const starknet = getStarknet()
+        const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, starknet.provider)
+        const stageData = await kickStarkContract.getStage()
+        setStage(stageData)
+        console.log("Stage:", stageData)
+    }
+
+    const fetchmanagerBalance = async () => {
+        const starknet = getStarknet()
+        const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, starknet.provider)
+        const managerBalanceData = await kickStarkContract.getManagerBalance()
+        const managerBalanceConverted = managerBalanceData.toString()
+        setManagerBalance(managerBalanceConverted)
+        console.log("Manager balance:", managerBalanceConverted)
     }
 
     // Validator functions
@@ -42,6 +67,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
             const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, wallet.account)
+            setTxCount(txCount + 1)
             return kickStarkContract.start_project(validatorAddr)
         }
     }
@@ -50,6 +76,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
             const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, wallet.account)
+            setTxCount(txCount + 1)
             return kickStarkContract.nextStage()
         }
     }
@@ -58,6 +85,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
             const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, wallet.account)
+            setTxCount(txCount + 1)
             return kickStarkContract.closeProject()
         }
     }
@@ -68,6 +96,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
             const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, wallet.account)
+            setTxCount(txCount + 1)
             return kickStarkContract.project_claim()
         }
     }
@@ -78,7 +107,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
             const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, wallet.account)
-            // Project needs to be started first for this to work
+            setTxCount(txCount + 1)
             return kickStarkContract.contribute(amount)
         }
     }
@@ -87,6 +116,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
         const wallet = getStarknet()
         if (wallet.isConnected) {
             const kickStarkContract = new Contract(kickStarkAbi as Abi, kickStarkAddr, wallet.account)
+            setTxCount(txCount + 1)
             return kickStarkContract.contributor_withdraw()
         }
     }
@@ -156,7 +186,13 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                 </button>
                             </div>
 
-                            <div className="my-10 text-brand-green text-2xl font-bold text-center">Builder Actions</div>
+                            <div className="mt-10 mb-4 text-brand-green text-2xl font-bold text-center">
+                                Builder Actions
+                            </div>
+
+                            <div className="mb-10 text-brand-purple text-2xl font-bold text-center">
+                                Claimable: {managerBalance}
+                            </div>
 
                             <div className="flex flex-col mb-4">
                                 <button

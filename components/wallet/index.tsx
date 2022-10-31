@@ -9,8 +9,6 @@ import { kickStarkAddr, validatorAddr } from "../../config/goerli-alpha"
 const Wallet: FC = () => {
     const { userAddress, setAppContext } = useContext(AppContext)
 
-    console.log("USERADDRESS", userAddress)
-
     const connectWallet = async () => {
         console.log("connecting...")
         try {
