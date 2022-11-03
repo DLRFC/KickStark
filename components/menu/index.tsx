@@ -96,7 +96,7 @@ const Menu: FC<Props> = ({userAddress}) => {
     ]
 
     return (
-        <div className="w-screen mt-[2%] pb-[25%]">
+        <div className="w-screen mt-[1%] pb-[25%]">
             {menuItems.map((items) => {
                 return (
                     <div className="">
