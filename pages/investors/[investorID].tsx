@@ -34,7 +34,7 @@ const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
                     <Listbox value={selectedProject} onChange={setSelectedProject}>
                         <div className="relative mt-1">
                             <Listbox.Button className="text-brand-gray relative w-full cursor-default rounded-lg bg-blue-200/20 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-brand-orange focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-orange sm:text-sm">
-                                <span className="block truncate">{selectedProject.name}</span>
+                                <span className="block truncate">Om</span>
                                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                     <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
                                 </span>

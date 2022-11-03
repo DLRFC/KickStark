@@ -1,5 +1,6 @@
 import React, { FC } from "react"
-import { CheckIcon, HandThumbUpIcon, UserIcon } from "@heroicons/react/20/solid"
+import { FaCheckCircle } from "react-icons/fa"
+// import { CheckIcon, HandThumbUpIcon, UserIcon } from "@heroicons/react/20/solid"
 import { Timeline } from "react-twitter-widgets"
 
 const ProgressReport: FC<any> = ({ project, githubMetrics }) => {
@@ -15,7 +16,7 @@ const ProgressReport: FC<any> = ({ project, githubMetrics }) => {
     ]
 
     return (
-        <div className="w-[100%] h-auto border-8 border-brand-orange rounded-lg text-brand-green flex flex-col justify-center place-items-center">
+        <div className="w-auto h-auto border-8 border-brand-orange rounded-lg text-brand-green flex flex-col justify-center place-items-center">
             <div className="my-5 text-2xl font-bold">Progress Report</div>
             <div>
                 <h3 className="text-lg font-medium leading-6 text-gray-100 text-center">Last 30 days</h3>
@@ -43,14 +44,7 @@ const ProgressReport: FC<any> = ({ project, githubMetrics }) => {
                             <li key={element.id}>
                                 <div className="relative pb-8">
                                     <div className="relative flex space-x-3">
-                                        <div>
-                                            <span className="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white">
-                                                <CheckIcon
-                                                    className="h-8 w-8 rounded-full text-white bg-green-500"
-                                                    aria-hidden="true"
-                                                />
-                                            </span>
-                                        </div>
+                                        <FaCheckCircle color="#db872e" fontSize="2.5em"/>
                                         <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                                             <div>
                                                 <p className="text-sm text-gray-400 mx-3">{element.title} </p>
