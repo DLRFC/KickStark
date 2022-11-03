@@ -256,7 +256,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     let project
     let metrics
     let githubMetrics
-    let tweets
 
     try {
         const result = await supabase.from("projects").select().eq("id", projectID)
@@ -282,6 +281,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
                           }
                         }
                       }
+                      pullRequests(last: 5, states: MERGED) {
+                        nodes {
+                          id
+                          title
+                          closedAt
+                        }
+                      }
                   }
               }
             }`
@@ -293,12 +299,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
                 metrics = data.user.repository
             }
 
-            const mergedPullRequests = metrics.object.repository.pullRequests.totalCount
+            console.log(metrics)
+
+            const totalPullRequests = metrics.object.repository.pullRequests.totalCount
             const commits = metrics.object.history.totalCount
+            const pullRequests = metrics.pullRequests.nodes
+
+            console.log(pullRequests)
 
             githubMetrics = {
-                mergedPullRequests: mergedPullRequests,
-                commits: commits
+                totalPullRequests: totalPullRequests,
+                commits: commits,
+                pullRequests: pullRequests
             }
         }
     } catch (error) {
