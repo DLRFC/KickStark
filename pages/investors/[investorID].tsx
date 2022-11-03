@@ -26,7 +26,7 @@ const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
     return (
         <div className="w-auto h-auto circuitBoard">
             <div className="mb-12">
-                <Header title={"contributor dashboard [id?]"} />
+                <Header title={"contributor dashboard"} />
             </div>
 
             <div className="flex flex-col place-items-center pb-[5%]">
@@ -34,7 +34,7 @@ const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
                     <Listbox value={selectedProject} onChange={setSelectedProject}>
                         <div className="relative mt-1">
                             <Listbox.Button className="text-brand-gray relative w-full cursor-default rounded-lg bg-blue-200/20 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-brand-orange focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-orange sm:text-sm">
-                                <span className="block truncate">Om</span>
+                                <span className="block truncate">Truth</span>
                                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                     <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
                                 </span>
@@ -128,34 +128,34 @@ const InvestorDashboard: NextPage<Props> = ({ projects, githubMetrics }) => {
                         </Tab.Panel>
                         <Tab.Panel className={classNames("rounded-xl bg-brand-gray p-3")}>
                             <div className="flex justify-center">
-                                <Progress title={"Stage 1"} desc="Here is the stage description" percent={88} />
+                                <Progress title={"Phase 1"} desc="Here is the stage description" percent={10} />
                                 <Progress
-                                    title={"Stage 2"}
+                                    title={"Phase 2"}
                                     desc="Impedit quo minus id quod maxime placeat facere possimus, omnis"
-                                    percent={67}
+                                    percent={20}
                                 />
                                 <Progress
-                                    title={"Stage 3"}
+                                    title={"Phase 3"}
                                     desc="Molestias excepturi sint occaecati cupiditate non provident"
-                                    percent={35}
+                                    percent={20}
                                 />
                             </div>
                             <div className="flex justify-center">
                                 <Progress
-                                    title={"Stage 4"}
+                                    title={"Phase 4"}
                                     desc="Impedit quo minus id quod maxime placeat facere possimus, omnis"
-                                    percent={21}
+                                    percent={30}
                                 />
                                 <Progress
-                                    title={"Stage 5"}
+                                    title={"Phase 5"}
                                     desc="Quo minus id quod maxime placeat facere possimus, omnis voluptas assum"
-                                    percent={6}
+                                    percent={20}
                                 />
-                                <Progress
+                                {/* <Progress
                                     title={"Stage 6"}
                                     desc="Quibusdam et aut officiis debitis aut rerum necessitatibus "
                                     percent={0}
-                                />
+                                /> */}
                             </div>
                         </Tab.Panel>
                         <Tab.Panel className={classNames("rounded-xl bg-brand-gray p-3")}>

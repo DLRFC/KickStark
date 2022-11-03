@@ -10,8 +10,8 @@ const ProgressReport: FC<any> = ({ project, githubMetrics }) => {
     const pullRequests = githubMetrics.pullRequests
 
     const stats = [
-        { name: "Merged Pull Requests", stat: githubMetrics.totalPullRequests },
         { name: "Total Commits", stat: githubMetrics.commits },
+        { name: "Merged Pull Requests", stat: githubMetrics.totalPullRequests },
         { name: "Total Tweets", stat: "2" }
     ]
 
@@ -24,10 +24,10 @@ const ProgressReport: FC<any> = ({ project, githubMetrics }) => {
                     {stats.map((item) => (
                         <div
                             key={item.name}
-                            className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6 text-center"
+                            className="overflow-hidden rounded-lg bg-brand-gray px-4 py-5 shadow sm:p-6 text-center"
                         >
-                            <dt className="truncate text-md font-bold text-gray-700">{item.name}</dt>
-                            <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{item.stat}</dd>
+                            <dt className="truncate text-md font-bold text-brand-darkest">{item.name}</dt>
+                            <dd className="mt-1 text-3xl font-semibold tracking-tight text-brand-teal">{item.stat}</dd>
                         </div>
                     ))}
                 </dl>
@@ -47,7 +47,7 @@ const ProgressReport: FC<any> = ({ project, githubMetrics }) => {
                                         <FaCheckCircle color="#db872e" fontSize="2.5em"/>
                                         <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                                             <div>
-                                                <p className="text-sm text-gray-400 mx-3">{element.title} </p>
+                                                <p className="text-base text-gray-400 mx-3">{element.title} </p>
                                             </div>
                                             <div className="whitespace-nowrap text-right text-sm text-gray-300">
                                                 <time dateTime={element.closedAt}>
