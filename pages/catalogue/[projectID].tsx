@@ -155,11 +155,11 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                         </div>
                     ) : (
                         <>
-                            <div className="my-5 text-brand-green text-2xl font-bold text-center">
+                            <div className="mt-10 mb-5 text-brand-green text-2xl font-bold text-center">
                                 Contributor Actions
                             </div>
 
-                            <div className="flex flex-col mb-4">
+                            <div className="flex flex-col mb-3">
                                 <input id="deposit-amt" className="py-2 rounded-md" />
                                 <button
                                     onClick={(e) =>
@@ -186,26 +186,8 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                 </button>
                             </div>
 
-                            <div className="mt-14 mb-4 text-brand-green text-2xl font-bold text-center">
+                            <div className="mt-16 mb-3 text-brand-green text-2xl font-bold text-center">
                                 Builder Actions
-                            </div>
-
-                            <div className="text-brand-gray text-xl font-bold text-center">
-                                Claimable: {managerBalance}
-                            </div>
-
-                            <div className="flex flex-col">
-                                <button
-                                    onClick={claim}
-                                    className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
-                                    disabled={!projectIsOpen}
-                                >
-                                    Claim Funds
-                                </button>
-                            </div>
-
-                            <div className="mt-14 mb-4 text-brand-green text-2xl font-bold text-center">
-                                Validator Actions
                             </div>
 
                             <div className="flex flex-col">
@@ -216,6 +198,23 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                 >
                                     Start Project
                                 </button>
+                            </div>
+
+                            <div className="flex flex-col">
+                                <button
+                                    onClick={claim}
+                                    className="mb-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
+                                    disabled={!projectIsOpen}
+                                >
+                                    Claim Funds
+                                </button>
+                            </div>
+                            <div className="text-brand-gray text-xl font-bold text-center">
+                                Claimable: {managerBalance}
+                            </div>
+
+                            <div className="mt-16 mb-3 text-brand-green text-2xl font-bold text-center">
+                                Validator Actions
                             </div>
 
                             <div className="flex flex-col">
@@ -231,7 +230,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                             <div className="flex flex-col mb-8">
                                 <button
                                     onClick={closeProject}
-                                    className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
+                                    className="mb-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
                                     disabled={!projectIsOpen}
                                 >
                                     Close Project
