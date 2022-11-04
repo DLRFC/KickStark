@@ -7,7 +7,7 @@ import ProgressReport from "../../components/projects/ProgressReport"
 import Roadmap from "../../components/projects/Roadmap"
 import { supabase } from "../../utils/supabase"
 import { apollo } from "../../utils/apollo"
-import { BigNumber } from "ethers"
+// import { BigNumber } from "ethers"
 
 import { gql } from "@apollo/client"
 import { Project } from "../../Types/Project"
@@ -147,19 +147,19 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                 <Roadmap phaseDescriptions={project.phaseDescriptions} phaseSummaries={project.phaseSummaries} />
             </div>
 
-            <div className="flex mx-[10%] my-[5%]">
-                <div className=" w-100% border-8 border-brand-orange rounded-lg mr-8 p-12">
+            <div className="flex items-start mx-[10%] my-[5%]">
+                <div className="w-auto border-8 border-brand-orange rounded-lg mr-8 px-12">
                     {userAddress === null ? (
-                        <div className="my-10 text-brand-green text-2xl font-bold text-center">
+                        <div className="my-5 text-brand-green text-2xl font-bold text-center">
                             Connect wallet to perform actions
                         </div>
                     ) : (
                         <>
-                            <div className="my-10 text-brand-green text-2xl font-bold text-center">
+                            <div className="mt-10 mb-5 text-brand-green text-2xl font-bold text-center">
                                 Contributor Actions
                             </div>
 
-                            <div className="flex flex-col mb-4">
+                            <div className="flex flex-col mb-3">
                                 <input id="deposit-amt" className="py-2 rounded-md" />
                                 <button
                                     onClick={(e) =>
@@ -169,7 +169,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                             )
                                         )
                                     }
-                                    className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
+                                    className="mt-2 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
                                     disabled={!projectIsOpen}
                                 >
                                     Deposit Funds
@@ -179,36 +179,18 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                             <div className="flex flex-col">
                                 <button
                                     onClick={withdraw}
-                                    className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
+                                    className="bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
                                     disabled={projectIsOpen}
                                 >
                                     Investor Refund
                                 </button>
                             </div>
 
-                            <div className="mt-10 mb-4 text-brand-green text-2xl font-bold text-center">
+                            <div className="mt-16 mb-3 text-brand-green text-2xl font-bold text-center">
                                 Builder Actions
                             </div>
 
-                            <div className="mb-10 text-brand-purple text-2xl font-bold text-center">
-                                Claimable: {managerBalance}
-                            </div>
-
-                            <div className="flex flex-col mb-4">
-                                <button
-                                    onClick={claim}
-                                    className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
-                                    disabled={!projectIsOpen}
-                                >
-                                    Claim Funds
-                                </button>
-                            </div>
-
-                            <div className="my-10 text-brand-green text-2xl font-bold text-center">
-                                Validator Actions
-                            </div>
-
-                            <div className="flex flex-col mb-4">
+                            <div className="flex flex-col">
                                 <button
                                     onClick={startProject}
                                     className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
@@ -218,7 +200,24 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                 </button>
                             </div>
 
-                            <div className="flex flex-col mb-4">
+                            <div className="flex flex-col">
+                                <button
+                                    onClick={claim}
+                                    className="mb-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
+                                    disabled={!projectIsOpen}
+                                >
+                                    Claim Funds
+                                </button>
+                            </div>
+                            <div className="text-brand-gray text-xl font-bold text-center">
+                                Claimable: {managerBalance}
+                            </div>
+
+                            <div className="mt-16 mb-3 text-brand-green text-2xl font-bold text-center">
+                                Validator Actions
+                            </div>
+
+                            <div className="flex flex-col">
                                 <button
                                     onClick={nextStage}
                                     className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
@@ -228,10 +227,10 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                 </button>
                             </div>
 
-                            <div className="flex flex-col mb-4">
+                            <div className="flex flex-col mb-8">
                                 <button
                                     onClick={closeProject}
-                                    className="my-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
+                                    className="mb-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"
                                     disabled={!projectIsOpen}
                                 >
                                     Close Project
