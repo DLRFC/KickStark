@@ -32,3 +32,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Function of Cairo Contract:
+
+1.	Project set-up (project owner, token addr, token supply, token price, max number of contributors, max contribution amount, number of project stages)
+2.	Project is started by project owner
+3.	Whitelisted contributors contribute to the project fund contract
+4.	For every project stage, validator checks whether milestone has reached, and if yes, then transfer the proper amount to the project team’s fund contract. 
+5.	If at any stage, project milestone is not reached, then remaining amount in the fund contract is transferred to the contributors’ fund
+
+## Flow Diagram 
+![Flow_Diagram](https://user-images.githubusercontent.com/92670642/200136714-85992e54-ac8c-49e0-a46d-771a13fb578c.png)
+
