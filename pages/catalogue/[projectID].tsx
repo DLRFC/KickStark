@@ -227,7 +227,7 @@ const ProjectProfile: NextPage<Props> = ({ project, githubMetrics }) => {
                                 </button>
                             </div>
 
-                            <div className="flex flex-col mb-8">
+                            <div className="flex flex-col mb-7">
                                 <button
                                     onClick={closeProject}
                                     className="mb-3 bg-brand-orange text-brand-darkest rounded-lg py-2 px-4"

@@ -5,7 +5,7 @@ const InvestorPreview: FC = () => {
 
 
     return (
-        <div className="mt-[15%] ml-[14%] mr-[5%] bg-brand-darker text-brand-gray">
+        <div className="mt-[21%] ml-[16%] mr-[5%] bg-brand-darker text-brand-gray">
             <img src={"investor-dashboard.png"} alt={"preview of an investor dashboard"} />
         </div>
     )
