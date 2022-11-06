@@ -29,7 +29,7 @@ const Menu: FC<Props> = ({userAddress}) => {
             id: 1,
             title: "KickStark",
             content:
-                "KickStart connects ecosystem grant providers and individual contributors to independent builders seeking development funding. Pledged funds are automatically released to builders as they deliver on their established goals. Building with KickStart exposes promising new projects to greater community support and enables trustless cooperation to drive ecosystem growth.",
+                "KickStark connects ecosystem grant providers and individual contributors to independent builders seeking development funding. Pledged funds are automatically released to builders as they deliver on their established goals. Building with KickStart exposes promising new projects to greater community support and enables trustless cooperation to drive ecosystem growth.",
             icon: <GiRecycle color="#db872e" fontSize="7.5em" />,
             link: (
                 <Link href="/catalogue">
